@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MicrocontrollerMonitorClass</class>
+ <widget class="QMainWindow" name="MicrocontrollerMonitorClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MicrocontrollerMonitor</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout"/>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuWindow">
+    <property name="title">
+     <string>Window</string>
+    </property>
+    <addaction name="actionNewMonitoringTab"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpenSymbolFile"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuWindow"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockWidgetConnection">
+   <property name="windowTitle">
+    <string>Connection</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetConnectionContents"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidgetTabExplorer">
+   <property name="windowTitle">
+    <string>Tab Explorer</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetTabExplorerContents">
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QTreeWidget" name="treeWidgetTabExplorer">
+       <column>
+        <property name="text">
+         <string>Tab Name</string>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>Processor #0</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Tab #0</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tab #1</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Processor #1</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Tab #0</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tab #1</string>
+         </property>
+        </item>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidgetLogger">
+   <property name="windowTitle">
+    <string>Logger</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetLoggerContents"/>
+  </widget>
+  <action name="actionNewMonitoringTab">
+   <property name="text">
+    <string>New Monitoring Tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionOpenSymbolFile">
+   <property name="text">
+    <string>Open Symbol File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="MicrocontrollerMonitor.qrc"/>
+ </resources>
+ <connections/>
+</ui>

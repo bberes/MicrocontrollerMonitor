@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Form Files\Connection">
+      <UniqueIdentifier>{66fc819f-21b3-4f5f-ac7a-4d10799b1859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\MonitoringView">
+      <UniqueIdentifier>{59e130cc-ef26-4e6c-a49e-319604bfec80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{7f3d0bca-d91c-422c-a528-461bb506c1cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{ba20a522-2dc2-4a14-903b-60775f9aaab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data">
+      <UniqueIdentifier>{f2ef78ec-72a0-4b18-a8af-3a8ed98678ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{6fef3810-0dce-45cd-9b28-c5a6e77773d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\Connection">
+      <UniqueIdentifier>{0d049640-e53e-4e1f-bef9-0b6a6aad55a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Connection">
+      <UniqueIdentifier>{30e9b11a-ab75-4bb4-89a7-5147283c71f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI\MonitoringView">
+      <UniqueIdentifier>{a0f05de0-9fe7-491d-bfdc-3391fa9d248c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\MonitoringView">
+      <UniqueIdentifier>{7818f53c-6fed-4bb3-8d3f-17dd2dd409fd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="UI\Connection\ConnectionWidget.ui">
+      <Filter>Form Files\Connection</Filter>
+    </QtUic>
+    <QtUic Include="UI\Connection\SerialPortSettings.ui">
+      <Filter>Form Files\Connection</Filter>
+    </QtUic>
+    <QtUic Include="UI\MonitoringView\MonitoringTab.ui">
+      <Filter>Form Files\MonitoringView</Filter>
+    </QtUic>
+    <QtUic Include="UI\MonitoringView\ProcessorTab.ui">
+      <Filter>Form Files\MonitoringView</Filter>
+    </QtUic>
+    <QtUic Include="UI\MonitoringView\ProcessorView.ui">
+      <Filter>Form Files\MonitoringView</Filter>
+    </QtUic>
+    <QtUic Include="UI\LoggerWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UI\MicrocontrollerMonitor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UI\NewMonitoringTabDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UI\RecorderWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UI\SymbolsWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UI\WatchWindowWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Data\Environment.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\EventLogger.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\LogData.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\WatchWindowTable.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Connection\ConnectionSettings.hpp">
+      <Filter>Header Files\UI\Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomEvent.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MicrocontrollerMonitorTypes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MicrocontrollerMonitor.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="MicrocontrollerMonitor.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MicrocontrollerMonitor.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Data\Environment.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\EventLogger.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\LogData.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\MonitoringTabTableModel.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\RecorderTypes.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\WatchWindowTable.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\WatchWindowTableModel.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Connection\ConnectionSettings.cpp">
+      <Filter>Source Files\UI\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Connection\ConnectionWidget.cpp">
+      <Filter>Source Files\UI\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Connection\SerialPortSettings.cpp">
+      <Filter>Source Files\UI\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\MonitoringView\MonitoringTab.cpp">
+      <Filter>Source Files\UI\MonitoringView</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\MonitoringView\ProcessorTab.cpp">
+      <Filter>Source Files\UI\MonitoringView</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\MonitoringView\ProcessorView.cpp">
+      <Filter>Source Files\UI\MonitoringView</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\CrashReportDialog.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\LoggerWidget.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\MicrocontrollerMonitor.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\NewMonitoringTabDialog.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\RecorderWidget.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\SymbolsWidget.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\ToggleableWidget.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\WatchWindowWidget.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Data\MonitoringTabTableModel.hpp">
+      <Filter>Header Files\Data</Filter>
+    </QtMoc>
+    <QtMoc Include="Data\RecorderTypes.hpp">
+      <Filter>Header Files\Data</Filter>
+    </QtMoc>
+    <QtMoc Include="Data\WatchWindowTableModel.hpp">
+      <Filter>Header Files\Data</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\Connection\ConnectionWidget.hpp">
+      <Filter>Header Files\UI\Connection</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\Connection\SerialPortSettings.hpp">
+      <Filter>Header Files\UI\Connection</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\CrashReportDialog.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\LoggerWidget.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\MicrocontrollerMonitor.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\MonitoringView\MonitoringTab.hpp">
+      <Filter>Header Files\UI\MonitoringView</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\MonitoringView\ProcessorTab.hpp">
+      <Filter>Header Files\UI\MonitoringView</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\MonitoringView\ProcessorView.hpp">
+      <Filter>Header Files\UI\MonitoringView</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\WatchWindowWidget.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\ToggleableWidget.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\SymbolsWidget.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\RecorderWidget.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="UI\NewMonitoringTabDialog.hpp">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>

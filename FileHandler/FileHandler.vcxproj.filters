@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Header Files\FileFormats">
+      <UniqueIdentifier>{cded9476-d720-437e-8d0f-da7f3f87c6d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileFormats">
+      <UniqueIdentifier>{841cd1a9-a8c6-4936-a474-a61210caf72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileFormats\COFF">
+      <UniqueIdentifier>{7d6e30fb-73e4-4d71-a791-2e6b13bf97cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileFormats\COFF">
+      <UniqueIdentifier>{794a87cd-bcc2-483b-9ca8-ebf3f53b836b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileFormats\COFF\Header">
+      <UniqueIdentifier>{72284acc-9764-4350-afb8-27bcba7cc468}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileFormats\COFF\Header">
+      <UniqueIdentifier>{125353d0-d5f1-4370-a8d9-edd97bd11e44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileFormats\COFF\SymbolTable">
+      <UniqueIdentifier>{3fbf8cb7-6bcd-4853-b59b-e764270fa9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileFormats\COFF\SymbolTable">
+      <UniqueIdentifier>{b21c5a3f-e55f-4b82-95a2-009b986628d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileFormats\COFF\Types">
+      <UniqueIdentifier>{7bc79716-2348-4c51-9140-aba46ec0b15b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileFormats\COFF\Utilities">
+      <UniqueIdentifier>{239717da-5105-40f1-b271-5acba1356abe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileFormats\COFF\Utilities">
+      <UniqueIdentifier>{33c05802-5658-4862-9946-aa5b01411ffa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FileFormats\COFF\Header\FileHeader.hpp">
+      <Filter>Header Files\FileFormats\COFF\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Header\HeaderFlags.hpp">
+      <Filter>Header Files\FileFormats\COFF\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Header\OptionalHeader.hpp">
+      <Filter>Header Files\FileFormats\COFF\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Header\SectionFlags.hpp">
+      <Filter>Header Files\FileFormats\COFF\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Header\SectionHeader.hpp">
+      <Filter>Header Files\FileFormats\COFF\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Header\TargetID.hpp">
+      <Filter>Header Files\FileFormats\COFF\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolTable\AuxiliaryEntry.hpp">
+      <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolTable\RelocationEntry.hpp">
+      <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolTable\StorageClass.hpp">
+      <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolTable\SymbolTableEntry.hpp">
+      <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolTable\TableEntry.hpp">
+      <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolTable\TypeDescriptor.hpp">
+      <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Types\EntryTypes.hpp">
+      <Filter>Header Files\FileFormats\COFF\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Types\ObjectProcessor.hpp">
+      <Filter>Header Files\FileFormats\COFF\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Types\ObjectPtr.hpp">
+      <Filter>Header Files\FileFormats\COFF\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Utilities\RelevantSymbols.hpp">
+      <Filter>Header Files\FileFormats\COFF\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Utilities\SymbolTree.hpp">
+      <Filter>Header Files\FileFormats\COFF\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Utilities\TreeNodes.hpp">
+      <Filter>Header Files\FileFormats\COFF\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\Utilities\TypeInfo.hpp">
+      <Filter>Header Files\FileFormats\COFF\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolFile.hpp">
+      <Filter>Header Files\FileFormats\COFF</Filter>
+    </ClInclude>
+    <ClInclude Include="FileFormats\COFF\SymbolFileReader.hpp">
+      <Filter>Header Files\FileFormats\COFF</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHandlerExport.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHandlerTypes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FileFormats\COFF\Header\FileHeader.cpp">
+      <Filter>Source Files\FileFormats\COFF\Header</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\Header\HeaderFlags.cpp">
+      <Filter>Source Files\FileFormats\COFF\Header</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\Header\OptionalHeader.cpp">
+      <Filter>Source Files\FileFormats\COFF\Header</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\Header\SectionHeader.cpp">
+      <Filter>Source Files\FileFormats\COFF\Header</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\SymbolTable\AuxiliaryEntry.cpp">
+      <Filter>Source Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\SymbolTable\RelocationEntry.cpp">
+      <Filter>Source Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\SymbolTable\SymbolTableEntry.cpp">
+      <Filter>Source Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\SymbolTable\TableEntry.cpp">
+      <Filter>Source Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\SymbolTable\TypeDescriptor.cpp">
+      <Filter>Source Files\FileFormats\COFF\SymbolTable</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\Utilities\RelevantSymbols.cpp">
+      <Filter>Source Files\FileFormats\COFF\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\Utilities\SymbolTree.cpp">
+      <Filter>Source Files\FileFormats\COFF\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\Utilities\TreeNodes.cpp">
+      <Filter>Source Files\FileFormats\COFF\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\Utilities\TypeInfo.cpp">
+      <Filter>Source Files\FileFormats\COFF\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\SymbolFile.cpp">
+      <Filter>Source Files\FileFormats\COFF</Filter>
+    </ClCompile>
+    <ClCompile Include="FileFormats\COFF\SymbolFileReader.cpp">
+      <Filter>Source Files\FileFormats\COFF</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

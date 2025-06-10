@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SerialPortSettingsClass</class>
+ <widget class="QWidget" name="SerialPortSettingsClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SerialPortSettings</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QFormLayout" name="formLayoutSerialPort">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelPortName">
+       <property name="text">
+        <string>Port Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEditPortName"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelBaudRate">
+       <property name="text">
+        <string>Baud Rate</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <layout class="QVBoxLayout" name="verticalLayoutBaudRateValue">
+       <item>
+        <widget class="QComboBox" name="comboBoxBaudRate"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEditBaudRateCustom"/>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelDataBits">
+       <property name="text">
+        <string>Data Bits</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="comboBoxDataBits"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelStopBits">
+       <property name="text">
+        <string>Stop Bits</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="comboBoxStopBits"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="labelParity">
+       <property name="text">
+        <string>Parity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="comboBoxParity"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="labelFlowControl">
+       <property name="text">
+        <string>Flow Control</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="comboBoxFlowControl"/>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

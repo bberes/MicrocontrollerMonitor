@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{f53d3c44-da8d-4787-8db2-0eecdcbb4496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data">
+      <UniqueIdentifier>{0dff7c10-2fae-4047-9229-b32b0bff5178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols">
+      <UniqueIdentifier>{394c716f-72a8-4fd0-b9af-71f8a4317ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols">
+      <UniqueIdentifier>{612093fb-2e6a-48a8-8b39-24bee34de8eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Requests">
+      <UniqueIdentifier>{a4325070-c1cb-4775-8737-9d3b8881b3a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Requests">
+      <UniqueIdentifier>{03a8a164-c556-4c40-b874-589b9d2a2993}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm">
+      <UniqueIdentifier>{0992d753-b235-4168-8318-8969bf808816}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols\HiTerm">
+      <UniqueIdentifier>{b5ad83c2-3839-4153-8dc0-3d2e078e25a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\SiMon">
+      <UniqueIdentifier>{73336229-9533-4dc4-9872-3c94c5a00da9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols\SiMon">
+      <UniqueIdentifier>{f626063d-d339-478f-9aac-ec5710266c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm\CommandData">
+      <UniqueIdentifier>{d566e4dc-8f00-48f7-9dbb-05b72b61fae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols\HiTerm\CommandData">
+      <UniqueIdentifier>{1a9df9c7-c08c-42be-9c80-e12eaed7b7ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm\Commands">
+      <UniqueIdentifier>{f87ceeb5-27ff-43ae-8a89-c1907e8d31e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols\HiTerm\Commands">
+      <UniqueIdentifier>{57edd2f0-9281-4829-8b03-47ecf9c8f582}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm\DataUnits">
+      <UniqueIdentifier>{f6973e3b-8b9f-4e57-ae04-dd04eab7c147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols\HiTerm\DataUnits">
+      <UniqueIdentifier>{6d2ba0bc-9943-4994-8893-296199e21da6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm\Exceptions">
+      <UniqueIdentifier>{4d0f5cd8-56e0-45a5-a080-28c4625f61f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm\Interfaces">
+      <UniqueIdentifier>{db12e328-21eb-4c14-a1d5-d20b7852b258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols\HiTerm\Interfaces">
+      <UniqueIdentifier>{d61c158d-32fa-4978-86ee-2a848b718026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm\Types">
+      <UniqueIdentifier>{6bcf07fe-dbc3-4786-bd43-00c4542541d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protocols\HiTerm\Utilities">
+      <UniqueIdentifier>{15759fdf-d6fc-4973-99f0-2bbc3907e1bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocols\HiTerm\Utilities">
+      <UniqueIdentifier>{7c56d843-8a49-4008-9771-b3ed0e1494d6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Data\AddressSize.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\MemoryReference.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\TabDataEntry.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\Variable.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data\VariableSize.hpp">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTermProtocol.hpp">
+      <Filter>Header Files\Protocols</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\HiTermCommandIDs.hpp">
+      <Filter>Header Files\Protocols\HiTerm</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\CommandData\BlackboxContent.hpp">
+      <Filter>Header Files\Protocols\HiTerm\CommandData</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\CommandData\BlackboxContent_DEPRECATED.hpp">
+      <Filter>Header Files\Protocols\HiTerm\CommandData</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\CommandData\HiTermVariable.hpp">
+      <Filter>Header Files\Protocols\HiTerm\CommandData</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTab.hpp">
+      <Filter>Header Files\Protocols\HiTerm\CommandData</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTabIndex.hpp">
+      <Filter>Header Files\Protocols\HiTerm\CommandData</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTabType.hpp">
+      <Filter>Header Files\Protocols\HiTerm\CommandData</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTabUnit.hpp">
+      <Filter>Header Files\Protocols\HiTerm\CommandData</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\Ping.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadBlackboxContent.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadBlackboxContent_DEPRECATED.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadMonTab.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadTabNames.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadTabValues.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadUnits.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadVariables.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadVariables_DEPRECATED.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\Reboot.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\WriteVariables.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Commands\WriteVariables_DEPRECATED.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\DataUnits\Frame.hpp">
+      <Filter>Header Files\Protocols\HiTerm\DataUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\DataUnits\Message.hpp">
+      <Filter>Header Files\Protocols\HiTerm\DataUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\DataUnits\Packet.hpp">
+      <Filter>Header Files\Protocols\HiTerm\DataUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Exceptions\HiTermExceptions.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Interfaces\MessageProcessor.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Interfaces\MessageReceiver.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Types\MemoryEntries.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Types\MessageProcessorPtr.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Types\MessagePtr.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\Codec.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\CommonParts.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\DataProcessor.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\DataUnitProcessors.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\DeviceRole.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\FrameIDs.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageDispatcher.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageStore.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageType.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageTypeID.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\HiTerm\Utilities\ProcessorID.hpp">
+      <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\SiMon\SiMonCommandIDs.hpp">
+      <Filter>Header Files\Protocols\SiMon</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocols\SiMon\SiMonCommands.hpp">
+      <Filter>Header Files\Protocols\SiMon</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\PingRequest.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\ReadArrayRequest.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\ReadVariablesRequest.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\Request.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\TabDataRequest.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\TabRequest.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\TabValuesRequest.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests\WriteVariablesRequest.hpp">
+      <Filter>Header Files\Requests</Filter>
+    </ClInclude>
+    <ClInclude Include="CommunicationExport.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommunicationProtocol.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommunicationTypes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Connection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResponseListeners.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Responses.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Data\MemoryReference.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data\Variable.cpp">
+      <Filter>Source Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTermProtocol.cpp">
+      <Filter>Source Files\Protocols</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\CommandData\BlackboxContent.cpp">
+      <Filter>Source Files\Protocols\HiTerm\CommandData</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\CommandData\BlackboxContent_DEPRECATED.cpp">
+      <Filter>Source Files\Protocols\HiTerm\CommandData</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\CommandData\HiTermVariable.cpp">
+      <Filter>Source Files\Protocols\HiTerm\CommandData</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\CommandData\MonTab.cpp">
+      <Filter>Source Files\Protocols\HiTerm\CommandData</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\CommandData\MonTabIndex.cpp">
+      <Filter>Source Files\Protocols\HiTerm\CommandData</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\CommandData\MonTabUnit.cpp">
+      <Filter>Source Files\Protocols\HiTerm\CommandData</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\Ping.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadBlackboxContent.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadBlackboxContent_DEPRECATED.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadMonTab.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadTabNames.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadTabValues.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadUnits.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadVariables.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadVariables_DEPRECATED.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\Reboot.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\WriteVariables.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Commands\WriteVariables_DEPRECATED.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\DataUnits\Frame.cpp">
+      <Filter>Source Files\Protocols\HiTerm\DataUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\DataUnits\Message.cpp">
+      <Filter>Source Files\Protocols\HiTerm\DataUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\DataUnits\Packet.cpp">
+      <Filter>Source Files\Protocols\HiTerm\DataUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Interfaces\MessageProcessor.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Interfaces\MessageReceiver.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\Codec.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\CommonParts.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\DataProcessor.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\DataUnitProcessors.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\MessageDispatcher.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\MessageStore.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\MessageTypeID.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\HiTerm\Utilities\ProcessorID.cpp">
+      <Filter>Source Files\Protocols\HiTerm\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocols\SiMon\SiMonCommands.cpp">
+      <Filter>Source Files\Protocols\SiMon</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\PingRequest.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\ReadArrayRequest.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\ReadVariablesRequest.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\Request.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\TabDataRequest.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\TabRequest.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\TabValuesRequest.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="Requests\WriteVariablesRequest.cpp">
+      <Filter>Source Files\Requests</Filter>
+    </ClCompile>
+    <ClCompile Include="CommunicationProtocol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Connection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Responses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

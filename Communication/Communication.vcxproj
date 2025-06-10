@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommunicationExport.hpp" />
+    <ClInclude Include="CommunicationProtocol.hpp" />
+    <ClInclude Include="CommunicationTypes.hpp" />
+    <ClInclude Include="Connection.hpp" />
+    <ClInclude Include="Data\AddressSize.hpp" />
+    <ClInclude Include="Data\MemoryReference.hpp" />
+    <ClInclude Include="Data\TabDataEntry.hpp" />
+    <ClInclude Include="Data\Variable.hpp" />
+    <ClInclude Include="Data\VariableSize.hpp" />
+    <ClInclude Include="Protocols\HiTermProtocol.hpp" />
+    <ClInclude Include="Protocols\HiTerm\CommandData\BlackboxContent.hpp" />
+    <ClInclude Include="Protocols\HiTerm\CommandData\BlackboxContent_DEPRECATED.hpp" />
+    <ClInclude Include="Protocols\HiTerm\CommandData\HiTermVariable.hpp" />
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTab.hpp" />
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTabIndex.hpp" />
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTabType.hpp" />
+    <ClInclude Include="Protocols\HiTerm\CommandData\MonTabUnit.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\Ping.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadBlackboxContent.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadBlackboxContent_DEPRECATED.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadMonTab.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadTabNames.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadTabValues.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadUnits.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadVariables.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\ReadVariables_DEPRECATED.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\Reboot.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\WriteVariables.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Commands\WriteVariables_DEPRECATED.hpp" />
+    <ClInclude Include="Protocols\HiTerm\DataUnits\Frame.hpp" />
+    <ClInclude Include="Protocols\HiTerm\DataUnits\Message.hpp" />
+    <ClInclude Include="Protocols\HiTerm\DataUnits\Packet.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Exceptions\HiTermExceptions.hpp" />
+    <ClInclude Include="Protocols\HiTerm\HiTermCommandIDs.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Interfaces\MessageProcessor.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Interfaces\MessageReceiver.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Types\MemoryEntries.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Types\MessageProcessorPtr.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Types\MessagePtr.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\Codec.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\CommonParts.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\DataProcessor.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\DataUnitProcessors.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\DeviceRole.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\FrameIDs.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageDispatcher.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageStore.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageType.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\MessageTypeID.hpp" />
+    <ClInclude Include="Protocols\HiTerm\Utilities\ProcessorID.hpp" />
+    <ClInclude Include="Protocols\SiMon\SiMonCommandIDs.hpp" />
+    <ClInclude Include="Protocols\SiMon\SiMonCommands.hpp" />
+    <ClInclude Include="Requests\PingRequest.hpp" />
+    <ClInclude Include="Requests\ReadArrayRequest.hpp" />
+    <ClInclude Include="Requests\ReadVariablesRequest.hpp" />
+    <ClInclude Include="Requests\Request.hpp" />
+    <ClInclude Include="Requests\TabDataRequest.hpp" />
+    <ClInclude Include="Requests\TabRequest.hpp" />
+    <ClInclude Include="Requests\TabValuesRequest.hpp" />
+    <ClInclude Include="Requests\WriteVariablesRequest.hpp" />
+    <ClInclude Include="ResponseListeners.hpp" />
+    <ClInclude Include="Responses.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CommunicationProtocol.cpp" />
+    <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="Data\MemoryReference.cpp" />
+    <ClCompile Include="Data\Variable.cpp" />
+    <ClCompile Include="Protocols\HiTermProtocol.cpp" />
+    <ClCompile Include="Protocols\HiTerm\CommandData\BlackboxContent.cpp" />
+    <ClCompile Include="Protocols\HiTerm\CommandData\BlackboxContent_DEPRECATED.cpp" />
+    <ClCompile Include="Protocols\HiTerm\CommandData\HiTermVariable.cpp" />
+    <ClCompile Include="Protocols\HiTerm\CommandData\MonTab.cpp" />
+    <ClCompile Include="Protocols\HiTerm\CommandData\MonTabIndex.cpp" />
+    <ClCompile Include="Protocols\HiTerm\CommandData\MonTabUnit.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\Ping.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadBlackboxContent.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadBlackboxContent_DEPRECATED.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadMonTab.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadTabNames.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadTabValues.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadUnits.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadVariables.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\ReadVariables_DEPRECATED.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\Reboot.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\WriteVariables.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Commands\WriteVariables_DEPRECATED.cpp" />
+    <ClCompile Include="Protocols\HiTerm\DataUnits\Frame.cpp" />
+    <ClCompile Include="Protocols\HiTerm\DataUnits\Message.cpp" />
+    <ClCompile Include="Protocols\HiTerm\DataUnits\Packet.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Interfaces\MessageProcessor.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Interfaces\MessageReceiver.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\Codec.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\CommonParts.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\DataProcessor.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\DataUnitProcessors.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\MessageDispatcher.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\MessageStore.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\MessageTypeID.cpp" />
+    <ClCompile Include="Protocols\HiTerm\Utilities\ProcessorID.cpp" />
+    <ClCompile Include="Protocols\SiMon\SiMonCommands.cpp" />
+    <ClCompile Include="Requests\PingRequest.cpp" />
+    <ClCompile Include="Requests\ReadArrayRequest.cpp" />
+    <ClCompile Include="Requests\ReadVariablesRequest.cpp" />
+    <ClCompile Include="Requests\Request.cpp" />
+    <ClCompile Include="Requests\TabDataRequest.cpp" />
+    <ClCompile Include="Requests\TabRequest.cpp" />
+    <ClCompile Include="Requests\TabValuesRequest.cpp" />
+    <ClCompile Include="Requests\WriteVariablesRequest.cpp" />
+    <ClCompile Include="Responses.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kernel\Kernel.vcxproj">
+      <Project>{6af695aa-b2a0-4b06-ae08-b0cbf2105383}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.vcxproj">
+      <Project>{2ba43f2a-71ea-4cf4-85b2-d57357892dd3}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F4D7FFF1-C921-44DE-9ACE-A24398724929}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.9.0_msvc2022_64</QtInstall>
+    <QtModules>core</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.9.0_msvc2022_64</QtInstall>
+    <QtModules>core</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(SolutionDir)Kernel;$(SolutionDir)Network;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(SolutionDir)Kernel;$(SolutionDir)Network;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>COMMUNICATION_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>COMMUNICATION_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
