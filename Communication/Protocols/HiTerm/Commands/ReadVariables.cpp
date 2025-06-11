@@ -2,6 +2,7 @@
 
 // #Kernel
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\Utilities\CommonParts.hpp"
@@ -29,7 +30,7 @@ Communication::HiTerm::ReadVariables::Command::Command (UInt8 key, const MemoryE
 
 Communication::HiTerm::ReadVariables::Command* Communication::HiTerm::ReadVariables::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -86,7 +87,7 @@ Communication::HiTerm::ReadVariables::Response::Response (UInt8 key, const Varia
 
 Communication::HiTerm::ReadVariables::Response* Communication::HiTerm::ReadVariables::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

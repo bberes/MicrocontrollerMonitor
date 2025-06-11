@@ -3,6 +3,7 @@
 // #Kernel
 #include "Serialization\ReadWrite.hpp"
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -16,7 +17,7 @@ UInt8 Communication::HiTerm::ReadUnits::GetID ()
 
 Communication::HiTerm::ReadUnits::Command* Communication::HiTerm::ReadUnits::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -63,7 +64,7 @@ Communication::HiTerm::ReadUnits::Response::Response (UInt8 key, const ByteArray
 
 Communication::HiTerm::ReadUnits::Response* Communication::HiTerm::ReadUnits::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

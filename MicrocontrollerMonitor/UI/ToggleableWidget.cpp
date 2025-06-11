@@ -1,9 +1,12 @@
 #include "ToggleableWidget.hpp"
 
+// #MicrocontrollerMonitor
+#include "Utilities.hpp"
+
 
 ToggleableWidget::ToggleableWidget (QWidget* parent/* = nullptr*/)
 	: QWidget	(parent)
-	, action	(new QAction (this))
+	, action	(MakeChild<QAction> (*this))
 {
 	action->setObjectName ("action");
 	action->setCheckable (true);

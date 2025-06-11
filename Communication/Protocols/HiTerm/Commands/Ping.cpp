@@ -6,6 +6,7 @@
 // #Kernel
 #include "Serialization\ReadWrite.hpp"
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -19,7 +20,7 @@ UInt8 Communication::HiTerm::Ping::GetID ()
 
 Communication::HiTerm::Ping::Command* Communication::HiTerm::Ping::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -66,7 +67,7 @@ Communication::HiTerm::Ping::Response::Response (UInt8 key, Status status)
 
 Communication::HiTerm::Ping::Response* Communication::HiTerm::Ping::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

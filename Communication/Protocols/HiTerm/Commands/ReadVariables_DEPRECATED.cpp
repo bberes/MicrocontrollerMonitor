@@ -2,6 +2,7 @@
 
 // #Kernel
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\Utilities\CommonParts.hpp"
@@ -44,7 +45,7 @@ Communication::HiTerm::Deprecated::ReadVariables::Command::Command (UInt8 key, c
 
 Communication::HiTerm::Deprecated::ReadVariables::Command* Communication::HiTerm::Deprecated::ReadVariables::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -87,7 +88,7 @@ Communication::HiTerm::Deprecated::ReadVariables::Response::Response (UInt8 key,
 
 Communication::HiTerm::Deprecated::ReadVariables::Response* Communication::HiTerm::Deprecated::ReadVariables::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

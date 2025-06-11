@@ -2,6 +2,7 @@
 
 // #Kernel
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -29,7 +30,7 @@ Communication::HiTerm::ReadBlackboxContent::Command::Command (UInt8 key, const B
 
 Communication::HiTerm::ReadBlackboxContent::Command* Communication::HiTerm::ReadBlackboxContent::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -78,7 +79,7 @@ Communication::HiTerm::ReadBlackboxContent::Response::Response (UInt8 key, const
 
 Communication::HiTerm::ReadBlackboxContent::Response* Communication::HiTerm::ReadBlackboxContent::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

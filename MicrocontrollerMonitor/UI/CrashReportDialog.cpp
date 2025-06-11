@@ -6,30 +6,34 @@
 #include <QPlainTextEdit>
 #include <QPushButton>
 
+// #MicrocontrollerMonitor
+#include "Utilities.hpp"
+
 
 CrashReportDialog::CrashReportDialog (QWidget* parent/* = nullptr*/)
 	: QDialog (parent)
 {
 	setWindowTitle ("Application Error Report");
 
-	QVBoxLayout* layout = new QVBoxLayout (this);
+	QVBoxLayout* layout = MakeChild<QVBoxLayout> (*this);
 
-	QLabel* label = new QLabel (
+	QLabel* label = MakeChild<QLabel> (*this);
+	label->setText (
 		"The application has encountered an unexpected error and needs to close.\n"
 		"Please describe the steps you took before the crash occurred.\n"
-		"This information will help us identify and fix the problem.",
-		this
+		"This information will help us identify and fix the problem."
 	);
 	layout->addWidget (label);
 
-	DEBUG_ONLY (debugLabel = new QLabel (this));
+	DEBUG_ONLY (debugLabel = MakeChild<QLabel> (*this));
 	DEBUG_ONLY (debugLabel->setTextInteractionFlags (Qt::TextInteractionFlag::TextSelectableByMouse));
 	DEBUG_ONLY (layout->addWidget (debugLabel));
 
-	inputBox = new QPlainTextEdit (this);
+	inputBox = MakeChild<QPlainTextEdit> (*this);
 	layout->addWidget (inputBox);
 
-	QPushButton* sendButton = new QPushButton ("Submit", this);
+	QPushButton* sendButton = MakeChild<QPushButton> (*this);
+	sendButton->setText ("Submit");
 	layout->addWidget (sendButton);
 
 	connect (sendButton, &QPushButton::clicked, this, &CrashReportDialog::accept);

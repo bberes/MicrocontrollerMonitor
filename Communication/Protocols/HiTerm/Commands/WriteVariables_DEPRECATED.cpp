@@ -2,6 +2,7 @@
 
 // #Kernel
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\Utilities\CommonParts.hpp"
@@ -29,7 +30,7 @@ Communication::HiTerm::Deprecated::WriteVariables::Command::Command (UInt8 key, 
 
 Communication::HiTerm::Deprecated::WriteVariables::Command* Communication::HiTerm::Deprecated::WriteVariables::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -59,7 +60,7 @@ size_t Communication::HiTerm::Deprecated::WriteVariables::Command::WriteData (Da
 
 Communication::HiTerm::Deprecated::WriteVariables::Response* Communication::HiTerm::Deprecated::WriteVariables::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

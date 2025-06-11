@@ -19,6 +19,7 @@
 // #MicrocontrollerMonitor
 #include "Data\WatchWindowTableModel.hpp"
 #include "CustomEvent.hpp"
+#include "Utilities.hpp"
 
 
 static const QString configFileName (".RuntimeCache\\WatchWindowVariables.cfg");
@@ -62,7 +63,7 @@ WatchWindowWidget::WatchWindowWidget (Utilities::Logger& logger, QWidget* parent
 	: ToggleableWidget	(parent)
 	, ui				(std::make_unique<Ui::WatchWindowWidgetClass> ())
 	, tableModel		(new WatchWindowTableModel)
-	, timer				(new QTimer (this))
+	, timer				(MakeChild<QTimer> (*this))
 	, protocol			(nullptr)
 {
 	ui->setupUi (this);
@@ -136,7 +137,7 @@ void WatchWindowWidget::AutoRefresh (bool autoRefresh)
 void WatchWindowWidget::RequestValues ()
 {
 	protocol->AddListener (*tableModel);
-	QCoreApplication::postEvent (this, new CustomEvent ([this] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		constexpr UInt8 processorID = 0u;
 		const auto& memoryRefs = tableModel->GetMemoryRefs ();
 		const Communication::ReadVariablesRequest valuesRequest (processorID, memoryRefs);
@@ -157,7 +158,7 @@ void WatchWindowWidget::HandleChange (const QModelIndex& topLeft, const QModelIn
 
 void WatchWindowWidget::RequestWrite (const Communication::Variable& variable)
 {
-	QCoreApplication::postEvent (this, new CustomEvent ([this, variable] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this, variable] () {
 		constexpr UInt8 processorID = 0u;
 		const Communication::WriteVariablesRequest writeRequest (processorID, { variable });
 		protocol->SendRequest (writeRequest);

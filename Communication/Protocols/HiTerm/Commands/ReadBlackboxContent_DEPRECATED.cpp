@@ -3,6 +3,7 @@
 // #Kernel
 #include "Serialization\ReadWrite.hpp"
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -30,7 +31,7 @@ Communication::HiTerm::Deprecated::ReadBlackboxContent::Command::Command (UInt8 
 
 Communication::HiTerm::Deprecated::ReadBlackboxContent::Command* Communication::HiTerm::Deprecated::ReadBlackboxContent::Command::New (DeserializationSelector ds) const
 {
-	return new Deprecated::ReadBlackboxContent::Command (ds);
+	return MakeRaw<Deprecated::ReadBlackboxContent::Command> (ds);
 }
 
 
@@ -79,7 +80,7 @@ Communication::HiTerm::Deprecated::ReadBlackboxContent::Response::Response (UInt
 
 Communication::HiTerm::Deprecated::ReadBlackboxContent::Response* Communication::HiTerm::Deprecated::ReadBlackboxContent::Response::New (DeserializationSelector ds) const
 {
-	return new Deprecated::ReadBlackboxContent::Response (ds);
+	return MakeRaw<Deprecated::ReadBlackboxContent::Response> (ds);
 }
 
 

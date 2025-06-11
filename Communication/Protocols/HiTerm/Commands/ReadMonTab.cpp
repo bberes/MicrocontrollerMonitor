@@ -2,6 +2,7 @@
 
 // #Kernel
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -29,7 +30,7 @@ Communication::HiTerm::ReadMonTab::Command::Command (UInt8 key, MonTabIndex inde
 
 Communication::HiTerm::ReadMonTab::Command* Communication::HiTerm::ReadMonTab::Command::New (DeserializationSelector ds) const
 {
-	auto m = new Command (ds);
+	auto m = MakeRaw<Command> (ds);
 	m->SetTabIndex (index);
 	return m;
 }
@@ -80,7 +81,7 @@ Communication::HiTerm::ReadMonTab::Response::Response (UInt8 key, MonTabIndex in
 
 Communication::HiTerm::ReadMonTab::Response* Communication::HiTerm::ReadMonTab::Response::New (DeserializationSelector ds) const
 {
-	auto m = new Response (ds);
+	auto m = MakeRaw<Response> (ds);
 	m->SetTabIndex (index);
 	return m;
 }

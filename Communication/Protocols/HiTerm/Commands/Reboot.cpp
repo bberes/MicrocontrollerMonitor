@@ -2,6 +2,7 @@
 
 // #Kernel
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -15,7 +16,7 @@ UInt8 Communication::HiTerm::Reboot::GetID ()
 
 Communication::HiTerm::Reboot::Command* Communication::HiTerm::Reboot::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -49,7 +50,7 @@ size_t Communication::HiTerm::Reboot::Command::WriteData (DataStream& /*ds*/) co
 
 Communication::HiTerm::Reboot::Response* Communication::HiTerm::Reboot::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

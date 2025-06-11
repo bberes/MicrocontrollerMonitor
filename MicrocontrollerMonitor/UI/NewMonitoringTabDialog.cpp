@@ -6,11 +6,14 @@
 // #Communication
 #include "Protocols\HiTerm\CommandData\MonTabIndex.hpp"
 
+// #MicrocontrollerMonitor
+#include "Utilities.hpp"
+
 
 NewMonitoringTabDialog::NewMonitoringTabDialog (QWidget* parent)
 	: QDialog		(parent)
 	, ui			(std::make_unique<Ui::NewMonitoringTabDialogClass> ())
-	, intValidator	(new QIntValidator (this))
+	, intValidator	(MakeChild<QIntValidator> (*this))
 {
 	ui->setupUi (this);
 

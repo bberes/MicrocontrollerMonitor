@@ -14,6 +14,9 @@
 // #Communication
 #include "Connection.hpp"
 
+// #MicrocontrollerMonitor
+#include "Utilities.hpp"
+
 
 namespace {
 
@@ -31,7 +34,7 @@ bool IsCustomBaudRateSelected (Ui::SerialPortSettingsClass& ui)
 SerialPortSettings::SerialPortSettings (Communication::Connection& connection, QWidget* parent)
 	: ConnectionSettings	(parent)
 	, ui					(std::make_unique<Ui::SerialPortSettingsClass> ())
-	, intValidator			(new QIntValidator (this)) // #ToDo: use fn. to enforce passing parent on creation: Create<QIntValidator> (this)
+	, intValidator			(MakeChild<QIntValidator> (*this))
 	, connection			(connection)
 {
 	ui->setupUi (this);

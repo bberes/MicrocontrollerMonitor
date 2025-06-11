@@ -4,6 +4,7 @@
 #include "Exceptions\KernelExceptions.hpp"
 #include "Serialization\ReadWrite.hpp"
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -31,7 +32,7 @@ Communication::HiTerm::ReadTabValues::Command::Command (UInt8 key, MonTabIndex i
 
 Communication::HiTerm::ReadTabValues::Command* Communication::HiTerm::ReadTabValues::Command::New (DeserializationSelector ds) const
 {
-	auto m = new Command (ds);
+	auto m = MakeRaw<Command> (ds);
 	m->SetTabIndex (index);
 	return m;
 }
@@ -82,7 +83,7 @@ Communication::HiTerm::ReadTabValues::Response::Response (UInt8 key, MonTabIndex
 
 Communication::HiTerm::ReadTabValues::Response* Communication::HiTerm::ReadTabValues::Response::New (DeserializationSelector ds) const
 {
-	auto m = new Response (ds);
+	auto m = MakeRaw<Response> (ds);
 	m->SetTabIndex (index);
 	return m;
 }

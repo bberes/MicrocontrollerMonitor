@@ -21,6 +21,7 @@
 #include "Data\RecorderTypes.hpp"
 #include "Data\WatchWindowTable.hpp"
 #include "CustomEvent.hpp"
+#include "Utilities.hpp"
 
 
 GraphWidget::GraphWidget (QWidget* parent)
@@ -81,7 +82,7 @@ static Communication::MemoryRef GetRecorderStateMemRef (const WatchWindow::Table
 RecorderWidget::RecorderWidget (Environment& env, QWidget* parent/* = nullptr*/)
 	: ToggleableWidget	(parent)
 	, ui				(std::make_unique<Ui::RecorderWidget> ())
-	, graph				(new GraphWidget (this))
+	, graph				(MakeChild<GraphWidget> (*this))
 	, env				(env)
 	, connection		(env.GetConnection ())
 	, stateListener		(std::make_unique<StateListener>  (GetRecorderStateMemRef (env.RecorderParams ())))
@@ -116,7 +117,7 @@ void RecorderWidget::customEvent (QEvent* event)
 void RecorderWidget::ReadState ()
 {
 	connection.GetProtocol ().AddListener (*stateListener);
-	QCoreApplication::postEvent (this, new CustomEvent ([this] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		constexpr UInt8 processorID = 0u;
 		Communication::ReadVariablesRequest valuesRequest (processorID, { stateListener->mr });
 		connection.GetProtocol ().SendRequest (valuesRequest);
@@ -127,7 +128,7 @@ void RecorderWidget::ReadState ()
 void RecorderWidget::WriteParams ()
 {
 	connection.GetProtocol ().AddListener (*writeListener);
-	QCoreApplication::postEvent (this, new CustomEvent ([this] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		constexpr UInt8 processorID = 0u;
 		Communication::Variables variables = env.RecorderParams ().ToVariables ();
 		Communication::WriteVariablesRequest request (processorID, variables);
@@ -139,7 +140,7 @@ void RecorderWidget::WriteParams ()
 void RecorderWidget::ReadParams ()
 {
 	connection.GetProtocol ().AddListener (*paramsListener);
-	QCoreApplication::postEvent (this, new CustomEvent ([this] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		constexpr UInt8 processorID = 0u;
 		paramsListener->refs = env.RecorderParams ().ToMemoryRefs ();
 		Communication::ReadVariablesRequest request (processorID, paramsListener->refs);
@@ -151,7 +152,7 @@ void RecorderWidget::ReadParams ()
 void RecorderWidget::ReadArray ()
 {
 	connection.GetProtocol ().AddListener (*arrayListener);
-	QCoreApplication::postEvent (this, new CustomEvent ([this] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		constexpr UInt8 processorID = 0u;
 		const UInt32 address = arrayListener->addr;
 		const UInt16 length  = arrayListener->len;

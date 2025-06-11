@@ -6,11 +6,14 @@
 #include "qtconfigmacros.h"
 
 
+class QEvent;
 class QIntValidator;
 class QLabel;
 class QModelIndex;
+class QObject;
 class QPlainTextEdit;
 class QString;
+class QWidget;
 
 
 class ArrayListener;

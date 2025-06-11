@@ -13,6 +13,7 @@
 
 // #Kernel
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #FileHandler
 #include "FileFormats\COFF\SymbolTable\TypeDescriptor.hpp"
@@ -219,7 +220,7 @@ inline std::string File::COFF::SpecialType<baseType>::GetType () const
 template <File::COFF::BaseType baseType>
 inline File::COFF::SpecialType<baseType>* File::COFF::SpecialType<baseType>::Create (const SymbolConstPtr& symbol) const
 {
-	return new SpecialType<baseType> (symbol);
+	return MakeRaw<SpecialType<baseType>> (symbol);
 }
 
 

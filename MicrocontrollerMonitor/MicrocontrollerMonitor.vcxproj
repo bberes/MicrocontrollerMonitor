@@ -47,6 +47,7 @@
     <QtMoc Include="UI\SymbolsWidget.hpp" />
     <QtMoc Include="UI\ToggleableWidget.hpp" />
     <QtMoc Include="UI\WatchWindowWidget.hpp" />
+    <ClInclude Include="Utilities.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="MicrocontrollerMonitor.ico" />

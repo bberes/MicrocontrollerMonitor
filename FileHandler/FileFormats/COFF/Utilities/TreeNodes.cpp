@@ -199,7 +199,7 @@ std::string Struct::GetType () const
 
 Object* Struct::Create (const SymbolConstPtr& symbol) const
 {
-	return new Struct (symbol);
+	return MakeRaw<Struct> (symbol);
 }
 
 
@@ -238,7 +238,7 @@ std::string Union::GetType () const
 
 Object* Union::Create (const SymbolConstPtr& symbol) const
 {
-	return new Union (symbol);
+	return MakeRaw<Union> (symbol);
 }
 
 
@@ -260,7 +260,7 @@ std::string Pointer::GetType () const
 
 Object* Pointer::Create (const SymbolConstPtr& symbol) const
 {
-	return new Pointer (symbol);
+	return MakeRaw<Pointer> (symbol);
 }
 
 
@@ -332,7 +332,7 @@ std::string Array::GetType () const
 
 Object* Array::Create (const SymbolConstPtr& symbol) const
 {
-	return new Array (symbol);
+	return MakeRaw<Array> (symbol);
 }
 
 
@@ -422,7 +422,7 @@ std::string BitField::GetType () const
 
 Object* BitField::Create (const SymbolConstPtr& symbol) const
 {
-	return new BitField (symbol);
+	return MakeRaw<BitField> (symbol);
 }
 
 

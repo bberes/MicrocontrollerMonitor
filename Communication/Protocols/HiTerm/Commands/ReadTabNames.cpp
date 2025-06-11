@@ -3,6 +3,7 @@
 // #Kernel
 #include "Serialization\ReadWrite.hpp"
 #include "Utilities\Debug.hpp"
+#include "Utilities\Memory.hpp"
 
 // #Communication
 #include "Protocols\HiTerm\HiTermCommandIDs.hpp"
@@ -28,7 +29,7 @@ Communication::HiTerm::ReadTabNames::Command::Command (UInt8 key)
 
 Communication::HiTerm::ReadTabNames::Command* Communication::HiTerm::ReadTabNames::Command::New (DeserializationSelector ds) const
 {
-	return new Command (ds);
+	return MakeRaw<Command> (ds);
 }
 
 
@@ -75,7 +76,7 @@ Communication::HiTerm::ReadTabNames::Response::Response (UInt8 key, const std::s
 
 Communication::HiTerm::ReadTabNames::Response* Communication::HiTerm::ReadTabNames::Response::New (DeserializationSelector ds) const
 {
-	return new Response (ds);
+	return MakeRaw<Response> (ds);
 }
 
 

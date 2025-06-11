@@ -82,7 +82,7 @@ public:
 	DECLARE_CLASS_NAME (Communication, ReadArrayResponse)
 
 	void SetVariables (const std::vector<UInt32>& variables);
-	// #ToDo: temporary solution, create new type: Array (address, length, data)
+	// #ToDo: temporary solution, create Array type (address, length, data)
 };
 
 }

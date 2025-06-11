@@ -1,5 +1,8 @@
 #include "CustomEvent.hpp"
 
+// #Kernel
+#include "Utilities\Memory.hpp"
+
 
 CustomEvent::CustomEvent (const std::function<void ()>& process)
 	: QEvent	(QEvent::Type::User)
@@ -21,5 +24,5 @@ void CustomEvent::Process ()
 
 CustomEvent* CustomEvent::clone () const
 {
-	return new CustomEvent (*this);
+	return MakeRaw<CustomEvent> (*this);
 }

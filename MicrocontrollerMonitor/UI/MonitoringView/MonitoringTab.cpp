@@ -14,6 +14,7 @@
 // #MicrocontrollerMonitor
 #include "Data\MonitoringTabTableModel.hpp"
 #include "CustomEvent.hpp"
+#include "Utilities.hpp"
 
 
 MonitoringTab::MonitoringTab (Utilities::Logger& logger, Int32 processorID, Int32 tabIndex, QWidget* parent)
@@ -22,7 +23,7 @@ MonitoringTab::MonitoringTab (Utilities::Logger& logger, Int32 processorID, Int3
 	, processorID	(processorID)
 	, tabIndex		(tabIndex)
 	, tableModel	(new MonitoringTabTableModel)
-	, timer			(new QTimer (this))
+	, timer			(MakeChild<QTimer> (*this))
 	, protocol		(nullptr)
 {
 	ui->setupUi (this);
@@ -73,7 +74,7 @@ void MonitoringTab::AutoRefresh (bool autoRefresh)
 void MonitoringTab::RequestData ()
 {
 	protocol->AddListener (static_cast<Communication::TabDataResponseListener&> (*tableModel));
-	QCoreApplication::postEvent (this, new CustomEvent ([this] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		protocol->SendRequest (Communication::TabDataRequest (processorID, tabIndex));
 	}));
 }
@@ -82,7 +83,7 @@ void MonitoringTab::RequestData ()
 void MonitoringTab::RequestValues ()
 {
 	protocol->AddListener (static_cast<Communication::TabValuesResponseListener&> (*tableModel));
-	QCoreApplication::postEvent (this, new CustomEvent ([this] () {
+	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		protocol->SendRequest (Communication::TabValuesRequest (processorID, tabIndex));
 	}));
 }

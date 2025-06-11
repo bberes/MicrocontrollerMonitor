@@ -29,6 +29,7 @@
     <ClInclude Include="Utilities\Logger.hpp" />
     <ClInclude Include="Utilities\LoggerProxy.hpp" />
     <ClInclude Include="Utilities\LogLevel.hpp" />
+    <ClInclude Include="Utilities\Memory.hpp" />
     <ClInclude Include="Utilities\Observer.hpp" />
     <ClInclude Include="Utilities\ScopeExit.hpp" />
     <ClInclude Include="Utilities\StringFunctions.hpp" />
