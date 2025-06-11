@@ -33,7 +33,8 @@ enum class StorageClass : UInt8 {
 	C_BLOCK		= 100,	// Reserved
 	C_FCN		= 101,	// Reserved
 	C_EOS		= 102,	// Reserved
-	C_FILE		= 103,	// Reserved	C_LINE		= 104	// Used only by utility programs
+	C_FILE		= 103,	// Reserved
+	C_LINE		= 104	// Used only by utility programs
 };
 
 
