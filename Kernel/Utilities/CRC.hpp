@@ -6,8 +6,8 @@
 #include "KernelExport.hpp"
 
 // #Kernel
-#include "KernelTypes.hpp"
 #include "Types\BaseTypes.hpp"
+#include "KernelTypes.hpp"
 
 
 namespace Utilities {

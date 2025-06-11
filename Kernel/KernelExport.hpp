@@ -3,7 +3,7 @@
 #define Kernel__KernelExport__hpp
 
 // #Qt
-#include <QtCore/qglobal.h>
+#include <QtCore\qglobal.h>
 
 
 #ifndef BUILD_STATIC
