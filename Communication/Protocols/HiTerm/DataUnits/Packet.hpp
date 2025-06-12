@@ -7,9 +7,9 @@
 
 // #Kernel
 #include "Types\ByteArray.hpp"
+#include "Types\Owner.hpp"
 
 // #Communication
-#include "Protocols\HiTerm\Types\MessagePtr.hpp"
 #include "CommunicationTypes.hpp"
 
 
@@ -20,7 +20,7 @@ public:
 	explicit Packet (const Message& message, const ProcessorID& procID);
 	explicit Packet (ByteArray&& packet);
 
-	MessagePtr GetMessage (const MessageStore& ms, ProcessorID& procID) const;
+	Owner<Message> GetMessage (const MessageStore& ms, ProcessorID& procID) const;
 	operator const ByteArray& () const;
 
 private:

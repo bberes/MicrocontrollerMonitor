@@ -48,11 +48,11 @@ void Object::Process (const SymbolFile& symbolFile)
 }
 
 
-void Object::AddChild (ObjectPtr&& object)
+void Object::AddChild (Owner<Object> object)
 {
 	ASSERT (object->parent == nullptr);
 	object->parent = this;
-	childNodes.push_back (std::forward<ObjectPtr> (object));
+	childNodes.push_back (std::move (object));
 }
 
 
@@ -179,7 +179,7 @@ void Struct::ProcessImpl (const SymbolFile& symbolFile)
 		ASSERT (storageClass == StorageClass::C_FIELD || storageClass == StorageClass::C_MOS);
 		auto childObject = ObjectFactory (symb);
 		childObject->Process (symbolFile);
-		AddChild (std::forward<ObjectPtr> (childObject));
+		AddChild (std::move (childObject));
 	}
 }
 
@@ -225,7 +225,7 @@ void Union::ProcessImpl (const SymbolFile& symbolFile)
 		ASSERT (symb->GetStorageClass () == StorageClass::C_MOU);
 		auto childObject = ObjectFactory (symb);
 		childObject->Process (symbolFile);
-		AddChild (std::forward<ObjectPtr> (childObject));
+		AddChild (std::move (childObject));
 	}
 }
 
@@ -267,10 +267,10 @@ Object* Pointer::Create (const SymbolConstPtr& symbol) const
 const TypeInfo Array::typeInfo (Array (nullptr), TypeDescriptor (BaseType::Void, DerivedType::Array));
 
 
-static ObjectPtr ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol);
+static Owner<Object> ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol);
 
 
-static ObjectPtr ObjectFactoryForArray (const SymbolConstPtr& symbol)
+static Owner<Object> ObjectFactoryForArray (const SymbolConstPtr& symbol)
 {
 	const auto& typeDescriptor = symbol->GetTypeSpecifier ();
 	ASSERT (typeDescriptor.GetFirstDerived () == DerivedType::Array);
@@ -361,7 +361,7 @@ void ArrayElement::ProcessImpl (const SymbolFile& symbolFile)
 	const AuxiliaryConstPtr& auxEntry = symbol->GetAuxiliaryEntry ();
 	ASSERT (auxEntry != nullptr);
 
-	ObjectPtr object;
+	Owner<Object> object;
 	if (auxEntry->IsMultidimensional ()) {
 		object = std::make_unique<Array> (CreateDecreasedDimensionSymbol (*symbol));
 	} else {
@@ -444,7 +444,7 @@ std::string BitField::GetMask () const
 }
 
 
-static ObjectPtr ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol)
+static Owner<Object> ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol)
 {
 	const auto& typeDescriptor = symbol->GetTypeSpecifier ();
 	const auto& baseType = typeDescriptor.GetBaseType ();
@@ -454,7 +454,7 @@ static ObjectPtr ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol)
 		ASSERT (false);
 		TODO; // #TODO
 	case BaseType::Char:
-		return ObjectPtr (TypeInfo::Create (typeDescriptor, symbol));
+		return Owner<Object> (TypeInfo::Create (typeDescriptor, symbol));
 //		return std::make_unique<CharType> (symbol);
 	case BaseType::Int16:
 	case BaseType::Int16_Other:
@@ -468,7 +468,7 @@ static ObjectPtr ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol)
 	case BaseType::Enum:
 		return std::make_unique<EnumType> (symbol);
 	case BaseType::UChar:
-		return ObjectPtr (TypeInfo::Create (typeDescriptor, symbol));
+		return Owner<Object> (TypeInfo::Create (typeDescriptor, symbol));
 	case BaseType::UInt16:
 	case BaseType::UInt16_Other:
 		return std::make_unique<UInt16Type> (symbol);
@@ -481,7 +481,7 @@ static ObjectPtr ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol)
 }
 
 
-ObjectPtr File::COFF::ObjectFactory (const SymbolConstPtr& symbol)
+Owner<Object> File::COFF::ObjectFactory (const SymbolConstPtr& symbol)
 {
 	const auto& typeDescriptor = symbol->GetTypeSpecifier ();
 	const auto& derivedType = typeDescriptor.GetFirstDerived ();

@@ -3,9 +3,6 @@
 // #QtUI
 #include "ui_SymbolsWidget.h"
 
-// #Standard
-#include <unordered_map>
-
 // #Qt
 #include <QClipboard>
 #include <QContextMenuEvent>
@@ -13,6 +10,9 @@
 #include <QFile>
 #include <QMenu>
 #include <QShortcut>
+
+// #Kernel
+#include "Types\HashTable.hpp"
 
 // #FileHandler
 #include "FileFormats\COFF\Utilities\SymbolTree.hpp"
@@ -39,7 +39,7 @@ public:
 
 private:
 	using Entries	= std::vector<Entry>;
-	using EntryMap	= std::unordered_map<QString, size_t>;
+	using EntryMap	= HashTable<QString, size_t>;
 	using Keys		= std::vector<QString>;
 
 	Entries		entries;

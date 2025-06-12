@@ -98,9 +98,6 @@
     <ClInclude Include="FileFormats\COFF\Types\ObjectProcessor.hpp">
       <Filter>Header Files\FileFormats\COFF\Types</Filter>
     </ClInclude>
-    <ClInclude Include="FileFormats\COFF\Types\ObjectPtr.hpp">
-      <Filter>Header Files\FileFormats\COFF\Types</Filter>
-    </ClInclude>
     <ClInclude Include="FileFormats\COFF\Utilities\RelevantSymbols.hpp">
       <Filter>Header Files\FileFormats\COFF\Utilities</Filter>
     </ClInclude>

@@ -2,13 +2,11 @@
 #ifndef UI__ConnectionWidget__hpp
 #define UI__ConnectionWidget__hpp
 
-// #Standard
-#include <unordered_map>
-
 // #Qt
 #include <QWidget>
 
 // #Kernel
+#include "Types\HashTable.hpp"
 #include "Types\Owner.hpp"
 #include "KernelTypes.hpp"
 
@@ -46,7 +44,7 @@ private:
 	Owner<Ui::ConnectionWidgetClass>	ui;
 	ConnectionSettings*					settings;
 
-	using SettingsWidgets = std::unordered_map<QString, ConnectionSettings*>;
+	using SettingsWidgets = HashTable<QString, ConnectionSettings*>;
 	SettingsWidgets						settingsWidgets;
 
 	Communication::Connection&			connection;

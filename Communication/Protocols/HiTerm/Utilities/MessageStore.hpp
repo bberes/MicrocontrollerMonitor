@@ -5,11 +5,9 @@
 // #ExportHeader
 #include "CommunicationExport.hpp"
 
-// #Standard
-#include <unordered_map>
-
 // #Kernel
 #include "Types\BaseTypes.hpp"
+#include "Types\HashTable.hpp"
 
 // #Communication
 #include "CommunicationTypes.hpp"
@@ -26,7 +24,7 @@ public:
 	Message*	CreateNew		(const MessageTypeID& typeID) const;
 
 private:
-	std::unordered_map<UInt16, Message*> store;
+	HashTable<UInt16, Message*> store;
 };
 
 }

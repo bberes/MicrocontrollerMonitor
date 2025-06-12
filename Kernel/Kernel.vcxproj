@@ -20,7 +20,8 @@
     <ClInclude Include="Types\BaseTypes.hpp" />
     <ClInclude Include="Types\ByteArray.hpp" />
     <ClInclude Include="Types\DataStream.hpp" />
-    <ClInclude Include="Types\IVariablePtr.hpp" />
+    <ClInclude Include="Types\HashSet.hpp" />
+    <ClInclude Include="Types\HashTable.hpp" />
     <ClInclude Include="Types\NamedType.hpp" />
     <ClInclude Include="Types\Owner.hpp" />
     <ClInclude Include="Utilities\CRC.hpp" />

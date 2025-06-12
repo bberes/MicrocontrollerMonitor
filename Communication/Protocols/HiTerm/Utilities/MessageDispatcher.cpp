@@ -8,12 +8,7 @@
 #include "ProcessorID.hpp"
 
 
-Communication::HiTerm::MessageDispatcher::~MessageDispatcher ()
-{
-	for (auto& pair : processors) {
-		delete pair.second;
-	}
-}
+Communication::HiTerm::MessageDispatcher::~MessageDispatcher () = default;
 
 
 static UInt32 GetKey (UInt8 processorID, const Communication::HiTerm::Message& message)
@@ -25,14 +20,14 @@ static UInt32 GetKey (UInt8 processorID, const Communication::HiTerm::Message& m
 }
 
 
-void Communication::HiTerm::MessageDispatcher::Add (UInt8 processorID, const Message& message, MessageProcessorPtr&& mp)
+void Communication::HiTerm::MessageDispatcher::Add (UInt8 processorID, const Message& message, Owner<MessageProcessor> mp)
 {
 	if (Contains (processorID, message)) {
 		throw std::invalid_argument ("{D63D10A6-600C-468A-A93E-A5A79C65AE87}");
 	}
 
 	auto key = GetKey (processorID, message);
-	processors[key] = mp.release ();
+	processors[key] = std::move (mp);
 }
 
 

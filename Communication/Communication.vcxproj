@@ -47,9 +47,6 @@
     <ClInclude Include="Protocols\HiTerm\HiTermCommandIDs.hpp" />
     <ClInclude Include="Protocols\HiTerm\Interfaces\MessageProcessor.hpp" />
     <ClInclude Include="Protocols\HiTerm\Interfaces\MessageReceiver.hpp" />
-    <ClInclude Include="Protocols\HiTerm\Types\MemoryEntries.hpp" />
-    <ClInclude Include="Protocols\HiTerm\Types\MessageProcessorPtr.hpp" />
-    <ClInclude Include="Protocols\HiTerm\Types\MessagePtr.hpp" />
     <ClInclude Include="Protocols\HiTerm\Utilities\Codec.hpp" />
     <ClInclude Include="Protocols\HiTerm\Utilities\CommonParts.hpp" />
     <ClInclude Include="Protocols\HiTerm\Utilities\DataProcessor.hpp" />

@@ -12,6 +12,7 @@
 #include <vector>
 
 // #Kernel
+#include "Types\Owner.hpp"
 #include "Utilities\Debug.hpp"
 #include "Utilities\Memory.hpp"
 
@@ -19,7 +20,6 @@
 #include "FileFormats\COFF\SymbolTable\TypeDescriptor.hpp"
 #include "FileFormats\COFF\SymbolTable\SymbolTableEntry.hpp"
 #include "FileFormats\COFF\Types\ObjectProcessor.hpp"
-#include "FileFormats\COFF\Types\ObjectPtr.hpp"
 #include "FileHandlerTypes.hpp"
 #include "TypeInfo.hpp"
 
@@ -37,7 +37,7 @@ public:
 
 	void					Process		(const SymbolFile& symbolFile);
 
-	void					AddChild	(ObjectPtr&& object);
+	void					AddChild	(Owner<Object> object);
 	bool					IsLeaf		() const;
 	void					Enumerate	(const ObjectProcessor& process) const;
 
@@ -61,12 +61,12 @@ private:
 	virtual void			ProcessImpl	(const SymbolFile& symbolFile) = 0;
 
 protected:
-	const SymbolConstPtr	symbol;
-	std::string				name;
+	const SymbolConstPtr		symbol;
+	std::string					name;
 
 private:
-	Object*					parent;
-	std::vector<ObjectPtr>	childNodes;
+	Object*						parent;
+	std::vector<Owner<Object>>	childNodes;
 };
 
 
@@ -199,7 +199,7 @@ typedef SpecialType<BaseType::UInt16_Other>	UInt16Type;
 typedef SpecialType<BaseType::UInt32>		UInt32Type;
 
 
-ObjectPtr ObjectFactory (const File::COFF::SymbolConstPtr& symbol);
+Owner<Object> ObjectFactory (const File::COFF::SymbolConstPtr& symbol);
 
 }
 }

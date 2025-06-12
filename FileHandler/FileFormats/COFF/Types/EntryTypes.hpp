@@ -14,7 +14,6 @@ namespace COFF {
 
 	using AuxiliaryConstPtr	= std::shared_ptr<const AuxiliaryEntry>;
 
-	using SymbolPtr			= std::shared_ptr<SymbolTableEntry>;
 	using SymbolConstPtr	= std::shared_ptr<const SymbolTableEntry>;
 
 }

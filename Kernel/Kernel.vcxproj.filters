@@ -62,7 +62,10 @@
     <ClInclude Include="Types\DataStream.hpp">
       <Filter>Header Files\Types</Filter>
     </ClInclude>
-    <ClInclude Include="Types\IVariablePtr.hpp">
+    <ClInclude Include="Types\HashSet.hpp">
+      <Filter>Header Files\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Types\HashTable.hpp">
       <Filter>Header Files\Types</Filter>
     </ClInclude>
     <ClInclude Include="Types\NamedType.hpp">

@@ -65,16 +65,20 @@ namespace Communication::HiTerm {
 	class Frame;
 	class FrameProcessor;
 	class Message;
+	class MessageProcessor;
 	class MessageReceiver;
 	class MessageStore;
 	class MessageTypeID;
 	class Packet;
 	class PacketProcessor;
 	class ProcessorID;
+
+	class Memory;
 	class Variable;
 
-	using Values	= std::vector<UInt32>;
-	using Variables	= std::vector<Variable>;
+	using MemoryEntries	= std::vector<Memory>;
+	using Values		= std::vector<UInt32>;
+	using Variables		= std::vector<Variable>;
 }
 
 

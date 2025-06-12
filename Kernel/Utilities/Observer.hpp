@@ -5,8 +5,8 @@
 // #ExportHeader
 #include "KernelExport.hpp"
 
-// #Standard
-#include <unordered_set>
+// #Kernel
+#include "Types\HashSet.hpp"
 
 
 namespace Utilities {
@@ -28,7 +28,7 @@ protected:
 	Subject () = default;
 	~Subject ();
 
-	using Observers = std::unordered_set<Observer*>;
+	using Observers = HashSet<Observer*>;
 	const Observers& GetObservers () const { return observers; }
 
 private:

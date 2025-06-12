@@ -78,9 +78,6 @@
     <Filter Include="Source Files\Protocols\HiTerm\Interfaces">
       <UniqueIdentifier>{d61c158d-32fa-4978-86ee-2a848b718026}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Protocols\HiTerm\Types">
-      <UniqueIdentifier>{6bcf07fe-dbc3-4786-bd43-00c4542541d8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Protocols\HiTerm\Utilities">
       <UniqueIdentifier>{15759fdf-d6fc-4973-99f0-2bbc3907e1bc}</UniqueIdentifier>
     </Filter>
@@ -184,15 +181,6 @@
     </ClInclude>
     <ClInclude Include="Protocols\HiTerm\Interfaces\MessageReceiver.hpp">
       <Filter>Header Files\Protocols\HiTerm\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Protocols\HiTerm\Types\MemoryEntries.hpp">
-      <Filter>Header Files\Protocols\HiTerm\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="Protocols\HiTerm\Types\MessageProcessorPtr.hpp">
-      <Filter>Header Files\Protocols\HiTerm\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="Protocols\HiTerm\Types\MessagePtr.hpp">
-      <Filter>Header Files\Protocols\HiTerm\Types</Filter>
     </ClInclude>
     <ClInclude Include="Protocols\HiTerm\Utilities\Codec.hpp">
       <Filter>Header Files\Protocols\HiTerm\Utilities</Filter>

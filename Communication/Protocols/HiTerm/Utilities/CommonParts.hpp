@@ -7,7 +7,6 @@
 #include "KernelTypes.hpp"
 
 // #Communication
-#include "Protocols\HiTerm\Types\MemoryEntries.hpp"
 #include "CommunicationTypes.hpp"
 
 

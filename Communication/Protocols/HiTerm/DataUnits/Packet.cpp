@@ -52,7 +52,7 @@ Communication::HiTerm::Packet::Packet (ByteArray&& packet)
 }
 
 
-Communication::HiTerm::MessagePtr Communication::HiTerm::Packet::GetMessage (const MessageStore& ms, ProcessorID& procID) const
+Owner<Communication::HiTerm::Message> Communication::HiTerm::Packet::GetMessage (const MessageStore& ms, ProcessorID& procID) const
 {
 	DataStream ds (packet);
 
@@ -63,7 +63,7 @@ Communication::HiTerm::MessagePtr Communication::HiTerm::Packet::GetMessage (con
 	size += Read (ds, commandID);
 
 	MessageTypeID typeID (procID.GetRole (), commandID);
-	auto message = MessagePtr (ms.CreateNew (typeID));
+	Owner<Message> message (ms.CreateNew (typeID));
 	size += message->Read (ds);
 
 	UInt16 rCRC = 0u;

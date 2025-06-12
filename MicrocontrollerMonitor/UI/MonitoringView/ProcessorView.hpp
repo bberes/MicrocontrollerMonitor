@@ -2,14 +2,12 @@
 #ifndef UI__ProcessorView__hpp
 #define UI__ProcessorView__hpp
 
-// #Standard
-#include <unordered_map>
-
 // #Qt
 #include <QWidget>
 
 // #Kernel
 #include "Types\BaseTypes.hpp"
+#include "Types\HashTable.hpp"
 #include "Types\Owner.hpp"
 #include "KernelTypes.hpp"
 
@@ -39,7 +37,7 @@ private slots:
 private:
 	Owner<Ui::ProcessorViewClass>	ui;
 
-	using Tabs = std::unordered_map<Int32, ProcessorTab*>;
+	using Tabs = HashTable<Int32, ProcessorTab*>;
 	Tabs							tabs;
 };
 

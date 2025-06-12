@@ -34,7 +34,7 @@ void File::COFF::SymbolTree::EnumerateLeaves (const ObjectProcessor& process) co
 void File::COFF::SymbolTree::Build (const SymbolFile& symbolFile)
 {
 	RelevantSymbols symbols (symbolFile);
-	symbols.Enumerate ([this, &symbolFile] (const SymbolPtr& symbol) {
+	symbols.Enumerate ([this, &symbolFile] (const SymbolConstPtr& symbol) {
 		auto object = ObjectFactory (symbol);
 		object->Process (symbolFile);
 		objects.push_back (object.release ());

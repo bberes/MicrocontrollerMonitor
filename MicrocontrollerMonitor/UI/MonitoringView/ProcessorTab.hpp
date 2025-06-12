@@ -2,14 +2,12 @@
 #ifndef UI__ProcessorTab__hpp
 #define UI__ProcessorTab__hpp
 
-// #Standard
-#include <unordered_map>
-
 // #Qt
 #include <QWidget>
 
 // #Kernel
 #include "Types\BaseTypes.hpp"
+#include "Types\HashTable.hpp"
 #include "Types\Owner.hpp"
 #include "KernelTypes.hpp"
 
@@ -38,7 +36,7 @@ private slots:
 private:
 	Owner<Ui::ProcessorTabClass>	ui;
 
-	using Tabs = std::unordered_map<Int32, MonitoringTab*>;
+	using Tabs = HashTable<Int32, MonitoringTab*>;
 	Tabs							tabs;
 
 	Utilities::Logger&				logger;

@@ -39,7 +39,7 @@ public:
 	Impl ();
 
 	void			Register			(const Message& message);
-	void			AddProcessor		(UInt8 id, Message& message, MessageProcessorPtr&& mp); // #ToDo: Owner
+	void			AddProcessor		(UInt8 id, Message& message, Owner<MessageProcessor> mp);
 	DataProcessor&	GetDataProcessor	();
 
 private:
@@ -401,13 +401,13 @@ void Communication::HiTermProtocol::Impl::Register (const Message& message)
 }
 
 
-void Communication::HiTermProtocol::Impl::AddProcessor (UInt8 id, Message& message, MessageProcessorPtr&& mp)
+void Communication::HiTermProtocol::Impl::AddProcessor (UInt8 id, Message& message, Owner<MessageProcessor> mp)
 {
 	if (messageDispatcher->Contains (id, message)) {
 		return;
 	}
 
-	messageDispatcher->Add (id, message, std::forward<MessageProcessorPtr> (mp));
+	messageDispatcher->Add (id, message, std::move (mp));
 }
 
 

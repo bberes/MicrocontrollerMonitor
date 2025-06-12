@@ -63,7 +63,7 @@ File::COFF::SymbolConstPtr File::COFF::SymbolFile::GetEntryByIndex (const UInt32
 	DataStream symbolStream (symbolArray);
 	symbolStream.setByteOrder (DataStream::ByteOrder::LittleEndian);
 
-	SymbolPtr symbol (std::make_shared<SymbolTableEntry> (ForDeserialization));
+	auto symbol (std::make_shared<SymbolTableEntry> (ForDeserialization));
 	symbol->Read (symbolStream);
 	return symbol;
 }

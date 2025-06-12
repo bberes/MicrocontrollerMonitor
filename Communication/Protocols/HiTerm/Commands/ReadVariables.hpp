@@ -5,7 +5,6 @@
 // #Communication
 #include "Protocols\HiTerm\CommandData\HiTermVariable.hpp"
 #include "Protocols\HiTerm\DataUnits\Message.hpp"
-#include "Protocols\HiTerm\Types\MemoryEntries.hpp"
 
 
 namespace Communication::HiTerm {

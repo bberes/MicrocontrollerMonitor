@@ -1,14 +1,12 @@
 #include "TypeInfo.hpp"
 
-// #Standard
-#include <unordered_map>
-
 // #Kernel
+#include "Types\HashTable.hpp"
+#include "Types\Owner.hpp"
 #include "Utilities\Debug.hpp"
 
 // #FileHandler
 #include "FileFormats\COFF\SymbolTable\TypeDescriptor.hpp"
-#include "FileFormats\COFF\Types\ObjectPtr.hpp"
 #include "TreeNodes.hpp"
 
 
@@ -17,9 +15,9 @@ namespace COFF {
 
 namespace {
 
-std::unordered_map<UInt16, ObjectConstPtr>& GetTypeInformations ()
+HashTable<UInt16, Owner<const Object>>& GetTypeInformations ()
 {
-	static std::unordered_map<UInt16, ObjectConstPtr> map;
+	static HashTable<UInt16, Owner<const Object>> map;
 	return map;
 }
 
@@ -31,7 +29,7 @@ TypeInfo::TypeInfo (const Object& object, const TypeDescriptor& typeDescriptor)
 	auto& map = GetTypeInformations ();
 	ASSERT (map.count (typeDescriptor) == 0u);
 
-	map.insert (std::pair<UInt16, ObjectConstPtr> (typeDescriptor, object.Create (nullptr)));
+	map.insert (std::pair<UInt16, Owner<const Object>> (typeDescriptor, object.Create (nullptr)));
 }
 
 

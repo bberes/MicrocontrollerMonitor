@@ -27,7 +27,6 @@
     <ClInclude Include="FileFormats\COFF\SymbolTable\TypeDescriptor.hpp" />
     <ClInclude Include="FileFormats\COFF\Types\EntryTypes.hpp" />
     <ClInclude Include="FileFormats\COFF\Types\ObjectProcessor.hpp" />
-    <ClInclude Include="FileFormats\COFF\Types\ObjectPtr.hpp" />
     <ClInclude Include="FileFormats\COFF\Utilities\RelevantSymbols.hpp" />
     <ClInclude Include="FileFormats\COFF\Utilities\SymbolTree.hpp" />
     <ClInclude Include="FileFormats\COFF\Utilities\TreeNodes.hpp" />

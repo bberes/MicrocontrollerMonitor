@@ -14,7 +14,7 @@
 namespace File {
 namespace COFF {
 
-using SymbolProcessor = std::function<void (const SymbolPtr&)>;
+using SymbolProcessor = std::function<void (const SymbolConstPtr&)>;
 
 
 class RelevantSymbols final {
@@ -28,7 +28,7 @@ public:
 	void				Enumerate	(const SymbolProcessor& process) const;
 
 private:
-	std::vector<SymbolPtr>		symbols;
+	std::vector<SymbolConstPtr>	symbols;
 //	std::vector<std::string>	names;
 };
 
