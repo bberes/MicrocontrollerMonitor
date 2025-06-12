@@ -12,9 +12,9 @@
 namespace File {
 namespace COFF {
 
-class AuxiliaryEntry final : public TableEntry {
+class AuxEntry final : public TableEntry {
 public:
-	explicit AuxiliaryEntry (DeserializationSelector);
+	explicit AuxEntry (DeserializationSelector);
 
 	// #ToDo: Remove these functions. There should be an interpreter entity (like an extension or so).
 	void				DecreaseDimension			();
@@ -41,17 +41,17 @@ private:
 }
 
 
-inline UInt32 File::COFF::AuxiliaryEntry::GetSectionLength () const
+inline UInt32 File::COFF::AuxEntry::GetSectionLength () const
 {
 	return sectionLength;
 }
 
-inline UInt16 File::COFF::AuxiliaryEntry::GetNumOfRelocationEntries () const
+inline UInt16 File::COFF::AuxEntry::GetNumOfRelocationEntries () const
 {
 	return numOfRelocationEntries;
 }
 
-inline UInt16 File::COFF::AuxiliaryEntry::GetNumOfLineNumberEntries () const
+inline UInt16 File::COFF::AuxEntry::GetNumOfLineNumberEntries () const
 {
 	return numOfLineNumberEntries;
 }

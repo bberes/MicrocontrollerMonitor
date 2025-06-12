@@ -9,12 +9,12 @@
 namespace File {
 namespace COFF {
 
-	class AuxiliaryEntry;
-	class SymbolTableEntry;
+	class AuxEntry;
+	class SymbolEntry;
 
-	using AuxiliaryConstPtr	= std::shared_ptr<const AuxiliaryEntry>;
+	using AuxiliaryConstPtr	= std::shared_ptr<const AuxEntry>;
 
-	using SymbolConstPtr	= std::shared_ptr<const SymbolTableEntry>;
+	using SymbolConstPtr	= std::shared_ptr<const SymbolEntry>;
 
 }
 }

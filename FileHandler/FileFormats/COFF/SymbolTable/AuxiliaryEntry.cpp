@@ -5,13 +5,13 @@
 #include "Utilities\Debug.hpp"
 
 
-File::COFF::AuxiliaryEntry::AuxiliaryEntry (DeserializationSelector ds)
+File::COFF::AuxEntry::AuxEntry (DeserializationSelector ds)
 	: TableEntry (ds)
 {
 }
 
 
-void File::COFF::AuxiliaryEntry::DecreaseDimension ()
+void File::COFF::AuxEntry::DecreaseDimension ()
 {
 	ASSERT (IsMultidimensional ());
 
@@ -33,13 +33,13 @@ void File::COFF::AuxiliaryEntry::DecreaseDimension ()
 }
 
 
-bool File::COFF::AuxiliaryEntry::IsMultidimensional () const
+bool File::COFF::AuxEntry::IsMultidimensional () const
 {
 	return GetArrayDimensionSize (1u) > 0u;
 }
 
 
-UInt16 File::COFF::AuxiliaryEntry::GetArrayDimensionSize (size_t dimIndex/* = 0u*/) const
+UInt16 File::COFF::AuxEntry::GetArrayDimensionSize (size_t dimIndex/* = 0u*/) const
 {
 	ASSERT (dimIndex < 5u);
 
@@ -52,13 +52,13 @@ UInt16 File::COFF::AuxiliaryEntry::GetArrayDimensionSize (size_t dimIndex/* = 0u
 }
 
 
-EntryType File::COFF::AuxiliaryEntry::GetType () const
+EntryType File::COFF::AuxEntry::GetType () const
 {
 	return EntryType::Auxiliary;
 }
 
 
-size_t File::COFF::AuxiliaryEntry::Read (DataStream& is)
+size_t File::COFF::AuxEntry::Read (DataStream& is)
 {
 	size_t size = 0u;
 
@@ -78,7 +78,7 @@ size_t File::COFF::AuxiliaryEntry::Read (DataStream& is)
 }
 
 
-size_t File::COFF::AuxiliaryEntry::Write (DataStream& os) const
+size_t File::COFF::AuxEntry::Write (DataStream& os) const
 {
 	size_t size = 0u;
 

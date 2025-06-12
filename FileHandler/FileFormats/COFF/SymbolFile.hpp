@@ -44,7 +44,7 @@ public:
 	explicit SymbolFile (DeserializationSelector, const ByteArray& byteArray);
 	virtual ~SymbolFile () override;
 
-	void				Enumerate		(const std::function<void (const SymbolTableEntry&)>& process) const;
+	void				Enumerate		(const std::function<void (const SymbolEntry&)>& process) const;
 	std::string			GetName			(const UInt32 index) const;
 	SymbolConstPtr		GetEntryByIndex	(const UInt32 index) const;
 
@@ -65,7 +65,7 @@ private:
 	std::vector<SectionHeaderCOFF2*>	sectionHeaders;
 //	std::vector<>	;	//	Raw data for each initialized section
 //	std::vector<>	;	//	Relocation information for each initialized section
-	std::vector<SymbolTableEntry*>		symbols;
+	std::vector<SymbolEntry*>			symbols;
 //	std::vector<>		strings;
 };
 

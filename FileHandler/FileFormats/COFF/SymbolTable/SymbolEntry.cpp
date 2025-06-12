@@ -1,4 +1,4 @@
-#include "SymbolTableEntry.hpp"
+#include "SymbolEntry.hpp"
 
 // #Kernel
 #include "Serialization\ReadWrite.hpp"
@@ -10,17 +10,17 @@
 #include "AuxiliaryEntry.hpp"
 
 
-File::COFF::SymbolTableEntry::SymbolTableEntry (DeserializationSelector ds)
+File::COFF::SymbolEntry::SymbolEntry (DeserializationSelector ds)
 	: TableEntry		(ds)
 	, auxiliaryEntry	(nullptr)
 {
 }
 
 
-File::COFF::SymbolTableEntry::~SymbolTableEntry () = default;
+File::COFF::SymbolEntry::~SymbolEntry () = default;
 
 
-std::string File::COFF::SymbolTableEntry::GetName (const SymbolFile& symbolFile) const
+std::string File::COFF::SymbolEntry::GetName (const SymbolFile& symbolFile) const
 {
 	if (symbolName[0] == '\0') {
 		ASSERT (symbolName[1] == '\0' && symbolName[2] == '\0' && symbolName[3] == '\0');
@@ -33,13 +33,13 @@ std::string File::COFF::SymbolTableEntry::GetName (const SymbolFile& symbolFile)
 }
 
 
-EntryType File::COFF::SymbolTableEntry::GetType () const
+EntryType File::COFF::SymbolEntry::GetType () const
 {
 	return EntryType::Symbol;
 }
 
 
-size_t File::COFF::SymbolTableEntry::Read (DataStream& is)
+size_t File::COFF::SymbolEntry::Read (DataStream& is)
 {
 	size_t size = 0u;
 
@@ -61,16 +61,16 @@ size_t File::COFF::SymbolTableEntry::Read (DataStream& is)
 
 	if (numOfAuxiliaryEntries != 0u) {
 //		Q_ASSERT (numOfAuxiliaryEntries == 1u);
-		auto auxiliaryEntryNotConst = std::make_shared<AuxiliaryEntry> (ForDeserialization);
-		size += auxiliaryEntryNotConst->Read (is);
-		auxiliaryEntry = auxiliaryEntryNotConst;
+		auto auxEntryNotConst = std::make_shared<AuxEntry> (ForDeserialization);
+		size += auxEntryNotConst->Read (is);
+		auxiliaryEntry = auxEntryNotConst;
 	}
 
 	return size;
 }
 
 
-size_t File::COFF::SymbolTableEntry::Write (DataStream& os) const
+size_t File::COFF::SymbolEntry::Write (DataStream& os) const
 {
 	size_t size = 0u;
 

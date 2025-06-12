@@ -18,7 +18,7 @@
 
 // #FileHandler
 #include "FileFormats\COFF\SymbolTable\TypeDescriptor.hpp"
-#include "FileFormats\COFF\SymbolTable\SymbolTableEntry.hpp"
+#include "FileFormats\COFF\SymbolTable\SymbolEntry.hpp"
 #include "FileFormats\COFF\Types\ObjectProcessor.hpp"
 #include "FileHandlerTypes.hpp"
 #include "TypeInfo.hpp"

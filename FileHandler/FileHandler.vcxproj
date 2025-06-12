@@ -22,7 +22,7 @@
     <ClInclude Include="FileFormats\COFF\SymbolTable\AuxiliaryEntry.hpp" />
     <ClInclude Include="FileFormats\COFF\SymbolTable\RelocationEntry.hpp" />
     <ClInclude Include="FileFormats\COFF\SymbolTable\StorageClass.hpp" />
-    <ClInclude Include="FileFormats\COFF\SymbolTable\SymbolTableEntry.hpp" />
+    <ClInclude Include="FileFormats\COFF\SymbolTable\SymbolEntry.hpp" />
     <ClInclude Include="FileFormats\COFF\SymbolTable\TableEntry.hpp" />
     <ClInclude Include="FileFormats\COFF\SymbolTable\TypeDescriptor.hpp" />
     <ClInclude Include="FileFormats\COFF\Types\EntryTypes.hpp" />
@@ -43,7 +43,7 @@
     <ClCompile Include="FileFormats\COFF\SymbolFileReader.cpp" />
     <ClCompile Include="FileFormats\COFF\SymbolTable\AuxiliaryEntry.cpp" />
     <ClCompile Include="FileFormats\COFF\SymbolTable\RelocationEntry.cpp" />
-    <ClCompile Include="FileFormats\COFF\SymbolTable\SymbolTableEntry.cpp" />
+    <ClCompile Include="FileFormats\COFF\SymbolTable\SymbolEntry.cpp" />
     <ClCompile Include="FileFormats\COFF\SymbolTable\TableEntry.cpp" />
     <ClCompile Include="FileFormats\COFF\SymbolTable\TypeDescriptor.cpp" />
     <ClCompile Include="FileFormats\COFF\Utilities\RelevantSymbols.cpp" />

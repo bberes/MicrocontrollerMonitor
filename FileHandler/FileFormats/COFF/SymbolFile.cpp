@@ -8,7 +8,7 @@
 #include "Header\OptionalHeader.hpp"
 #include "Header\SectionHeader.hpp"
 //#include "SymbolTable\RelocationEntry.hpp"
-#include "SymbolTable\SymbolTableEntry.hpp"
+#include "SymbolTable\SymbolEntry.hpp"
 
 
 ISymbolFile::~ISymbolFile () = default;
@@ -41,7 +41,7 @@ File::COFF::SymbolFile::~SymbolFile ()
 }
 
 
-void File::COFF::SymbolFile::Enumerate (const std::function<void (const SymbolTableEntry&)>& process) const
+void File::COFF::SymbolFile::Enumerate (const std::function<void (const SymbolEntry&)>& process) const
 {
 	for (const auto& symbol : symbols) {
 		process (*symbol);
@@ -63,7 +63,7 @@ File::COFF::SymbolConstPtr File::COFF::SymbolFile::GetEntryByIndex (const UInt32
 	DataStream symbolStream (symbolArray);
 	symbolStream.setByteOrder (DataStream::ByteOrder::LittleEndian);
 
-	auto symbol (std::make_shared<SymbolTableEntry> (ForDeserialization));
+	auto symbol (std::make_shared<SymbolEntry> (ForDeserialization));
 	symbol->Read (symbolStream);
 	return symbol;
 }
@@ -117,7 +117,7 @@ size_t File::COFF::SymbolFile::Read (DataStream& is)
 	symbolStream.setByteOrder (DataStream::ByteOrder::LittleEndian);
 
 	for (Int32 i = 0u; i < header.GetNumOfEntriesInSymbolTable (); ++i) {
-		auto v = std::make_unique<SymbolTableEntry> (ForDeserialization);
+		auto v = std::make_unique<SymbolEntry> (ForDeserialization);
 		v->Read (symbolStream);
 		if (v->HasAuxiliaryEntry ()) {
 			++i;
@@ -129,7 +129,7 @@ size_t File::COFF::SymbolFile::Read (DataStream& is)
 			INSPECT (v->HasAuxiliaryEntry (), name.c_str ());
 		}
 
-		symbols.push_back (v.release ()); // #ToDo: use Owner or vector<SymbolTableEntry> ???
+		symbols.push_back (v.release ()); // #ToDo: use Owner or vector<SymbolEntry> ???
 	}
 
 

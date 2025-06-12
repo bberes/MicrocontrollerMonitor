@@ -83,7 +83,7 @@
     <ClInclude Include="FileFormats\COFF\SymbolTable\StorageClass.hpp">
       <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
     </ClInclude>
-    <ClInclude Include="FileFormats\COFF\SymbolTable\SymbolTableEntry.hpp">
+    <ClInclude Include="FileFormats\COFF\SymbolTable\SymbolEntry.hpp">
       <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
     </ClInclude>
     <ClInclude Include="FileFormats\COFF\SymbolTable\TableEntry.hpp">
@@ -142,7 +142,7 @@
     <ClCompile Include="FileFormats\COFF\SymbolTable\RelocationEntry.cpp">
       <Filter>Source Files\FileFormats\COFF\SymbolTable</Filter>
     </ClCompile>
-    <ClCompile Include="FileFormats\COFF\SymbolTable\SymbolTableEntry.cpp">
+    <ClCompile Include="FileFormats\COFF\SymbolTable\SymbolEntry.cpp">
       <Filter>Source Files\FileFormats\COFF\SymbolTable</Filter>
     </ClCompile>
     <ClCompile Include="FileFormats\COFF\SymbolTable\TableEntry.cpp">

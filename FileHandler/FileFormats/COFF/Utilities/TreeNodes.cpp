@@ -344,10 +344,10 @@ ArrayElement::ArrayElement (const SymbolConstPtr& symbol, const UInt16 offset, c
 }
 
 
-static SymbolConstPtr CreateDecreasedDimensionSymbol (const SymbolTableEntry& symbol)
+static SymbolConstPtr CreateDecreasedDimensionSymbol (const SymbolEntry& symbol)
 {
-	auto symbolCopy = std::make_shared<SymbolTableEntry> (symbol);
-	auto auxEntryCopy = std::make_shared<AuxiliaryEntry> (*symbol.GetAuxiliaryEntry ());
+	auto symbolCopy = std::make_shared<SymbolEntry> (symbol);
+	auto auxEntryCopy = std::make_shared<AuxEntry> (*symbol.GetAuxiliaryEntry ());
 	auxEntryCopy->DecreaseDimension ();
 	symbolCopy->SetAuxiliaryEntry (auxEntryCopy);
 	return symbolCopy;
