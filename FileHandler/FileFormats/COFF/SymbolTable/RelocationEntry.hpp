@@ -8,8 +8,7 @@
 #include "Types\BaseTypes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class RelocationEntry final
 	: private Serializable
@@ -28,7 +27,6 @@ private:
 	UInt16	relocationType;
 };
 
-}
 }
 
 

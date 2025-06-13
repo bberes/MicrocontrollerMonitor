@@ -9,8 +9,7 @@
 #include "TableEntry.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class AuxEntry final : public TableEntry {
 public:
@@ -21,9 +20,9 @@ public:
 	bool				IsMultidimensional			() const;
 	UInt16				GetArrayDimensionSize		(size_t dimIndex = 0u) const;
 
-	inline UInt32		GetSectionLength			() const;
-	inline UInt16		GetNumOfRelocationEntries	() const;
-	inline UInt16		GetNumOfLineNumberEntries	() const;
+	inline UInt32		GetSectionLength			() const { return sectionLength; }
+	inline UInt16		GetNumOfRelocationEntries	() const { return numOfRelocationEntries; }
+	inline UInt16		GetNumOfLineNumberEntries	() const { return numOfLineNumberEntries; }
 
 	virtual EntryType	GetType						() const override;
 
@@ -37,23 +36,6 @@ private:
 	UInt8	notUsed[10]; // zero filled
 };
 
-}
-}
-
-
-inline UInt32 File::COFF::AuxEntry::GetSectionLength () const
-{
-	return sectionLength;
-}
-
-inline UInt16 File::COFF::AuxEntry::GetNumOfRelocationEntries () const
-{
-	return numOfRelocationEntries;
-}
-
-inline UInt16 File::COFF::AuxEntry::GetNumOfLineNumberEntries () const
-{
-	return numOfLineNumberEntries;
 }
 
 

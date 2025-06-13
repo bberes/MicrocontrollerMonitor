@@ -72,7 +72,7 @@ File::COFF::RelevantSymbols::RelevantSymbols (const SymbolFile& symbolFile)
 			return;
 		}
 
-		symbols.push_back (std::make_shared<SymbolEntry> (symbol));
+		symbols.push_back (symbol);
 //		names.push_back (name);
 	});
 
@@ -85,7 +85,7 @@ File::COFF::RelevantSymbols::~RelevantSymbols () = default;
 
 void File::COFF::RelevantSymbols::Enumerate (const SymbolProcessor& process) const
 {
-	for (const auto symbol : symbols) {
+	for (const auto& symbol : symbols) {
 		process (symbol);
 	}
 }

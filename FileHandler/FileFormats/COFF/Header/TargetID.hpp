@@ -6,8 +6,7 @@
 #include "Types\BaseTypes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 enum class TargetID : UInt16 {
 	TMS470			= 0x0097u,
@@ -19,7 +18,6 @@ enum class TargetID : UInt16 {
 	TMS320C5500Plus	= 0x00A1u
 };
 
-}
 }
 
 

@@ -8,8 +8,7 @@
 #include "Types\BaseTypes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class OptionalHeader final
 	: private Serializable
@@ -32,7 +31,6 @@ private:
 	Int32	startAddressOfInitializedData;
 };
 
-}
 }
 
 

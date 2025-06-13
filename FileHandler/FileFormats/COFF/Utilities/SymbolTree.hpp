@@ -9,12 +9,10 @@
 #include <vector>
 
 // #FileHandler
-#include "FileFormats\COFF\Types\ObjectProcessor.hpp"
 #include "FileHandlerTypes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class FILEHANDLER_EXPORT SymbolTree final {
 public:
@@ -30,7 +28,6 @@ private:
 	std::vector<Object*>	objects;
 };
 
-}
 }
 
 

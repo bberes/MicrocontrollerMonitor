@@ -26,7 +26,7 @@ template SpecialType<BaseType::UInt16_Other>;
 template SpecialType<BaseType::UInt32>;
 
 
-Object::Object (const SymbolConstPtr& symbol)
+Object::Object (const SymbolEntry& symbol)
 	: symbol (symbol)
 	, parent (nullptr)
 {
@@ -38,7 +38,7 @@ Object::~Object () = default;
 
 void Object::Process (const SymbolFile& symbolFile)
 {
-	name = symbol->GetName (symbolFile);
+	name = symbol.GetName (symbolFile);
 	INSPECT (name[0] == '_', name.c_str ());
 	if (name[0] == '_') {
 		name = name.substr (1u);
@@ -92,7 +92,7 @@ std::string Object::GetName () const
 }
 
 
-const SymbolConstPtr& Object::GetSymbol () const
+const SymbolEntry& Object::GetSymbol () const
 {
 	return symbol;
 }
@@ -137,7 +137,7 @@ std::string Object::MemberExpr () const
 uint32_t Object::CalcAddress () const
 {
 	if (parent == nullptr) {
-		return symbol->GetValue ();
+		return symbol.GetValue ();
 	}
 
 	return parent->CalcAddress () + CalcOffset ();
@@ -150,32 +150,32 @@ uint32_t Object::CalcOffset () const
 	if (IsIt<ArrayElement> (parent)) {
 		return 0u;
 	}
-	const StorageClass sc = symbol->GetStorageClass ();
+	const StorageClass sc = symbol.GetStorageClass ();
 	ASSERT (sc == StorageClass::C_MOS || sc == StorageClass::C_MOU || sc == StorageClass::C_FIELD);
-	return (sc == StorageClass::C_MOS) ? (symbol->GetValue () / 16) : 0u;
+	return (sc == StorageClass::C_MOS) ? (symbol.GetValue () / 16) : 0u;
 }
 
 
-const TypeInfo Struct::typeInfo (Struct (nullptr), TypeDescriptor (BaseType::Struct));
+const TypeInfo Struct::typeInfo (Struct (SymbolEntry {ForDeserialization}), TypeDescriptor (BaseType::Struct));
 
 
 void Struct::ProcessImpl (const SymbolFile& symbolFile)
 {
-	ASSERT (symbol->HasAuxiliaryEntry ());
-	const auto& auxiliaryEntry = symbol->GetAuxiliaryEntry ();
+	ASSERT (symbol.HasAuxiliaryEntry ());
+	const auto& auxEntry = symbol.GetAuxiliaryEntry ();
 
-	auto indexOfMembers = auxiliaryEntry->GetSectionLength ();
+	auto indexOfMembers = auxEntry.GetSectionLength ();
 	for (;; indexOfMembers += 2u) {
 		const auto& symb = symbolFile.GetEntryByIndex (indexOfMembers);
-		if (symb->GetStorageClass () == StorageClass::C_STRTAG) {
+		if (symb.GetStorageClass () == StorageClass::C_STRTAG) {
 			continue;
 		}
-		if (symb->GetStorageClass () == StorageClass::C_EOS) {
-			ASSERT (symb->GetName (symbolFile) == ".eos");
+		if (symb.GetStorageClass () == StorageClass::C_EOS) {
+			ASSERT (symb.GetName (symbolFile) == ".eos");
 			break;
 		}
 
-		const auto storageClass = symb->GetStorageClass ();
+		const auto storageClass = symb.GetStorageClass ();
 		ASSERT (storageClass == StorageClass::C_FIELD || storageClass == StorageClass::C_MOS);
 		auto childObject = ObjectFactory (symb);
 		childObject->Process (symbolFile);
@@ -186,7 +186,7 @@ void Struct::ProcessImpl (const SymbolFile& symbolFile)
 
 std::string Struct::GetType () const
 {
-	const TypeDescriptor& typeDescriptor = symbol->GetTypeSpecifier ();
+	const TypeDescriptor& typeDescriptor = symbol.GetTypeSpecifier ();
 
 	std::string result;
 	if (typeDescriptor.GetFirstDerived () == DerivedType::Pointer) {
@@ -197,32 +197,32 @@ std::string Struct::GetType () const
 }
 
 
-Object* Struct::Create (const SymbolConstPtr& symbol) const
+Object* Struct::Create (const SymbolEntry& symbol) const
 {
 	return MakeRaw<Struct> (symbol);
 }
 
 
-const TypeInfo Union::typeInfo (Union (nullptr), TypeDescriptor (BaseType::Union));
+const TypeInfo Union::typeInfo (Union (SymbolEntry {ForDeserialization}), TypeDescriptor (BaseType::Union));
 
 
 void Union::ProcessImpl (const SymbolFile& symbolFile)
 {
-	ASSERT (symbol->HasAuxiliaryEntry ());
-	const auto& auxiliaryEntry = symbol->GetAuxiliaryEntry ();
+	ASSERT (symbol.HasAuxiliaryEntry ());
+	const auto& auxEntry = symbol.GetAuxiliaryEntry ();
 
-	auto indexOfMembers = auxiliaryEntry->GetSectionLength ();
+	auto indexOfMembers = auxEntry.GetSectionLength ();
 	for (;; indexOfMembers += 2u) {
 		const auto& symb = symbolFile.GetEntryByIndex (indexOfMembers);
-		if (symb->GetStorageClass () == StorageClass::C_UNTAG) {
+		if (symb.GetStorageClass () == StorageClass::C_UNTAG) {
 			continue;
 		}
-		if (symb->GetStorageClass () == StorageClass::C_EOS) {
-			ASSERT (symb->GetName (symbolFile) == ".eos");
+		if (symb.GetStorageClass () == StorageClass::C_EOS) {
+			ASSERT (symb.GetName (symbolFile) == ".eos");
 			break;
 		}
 
-		ASSERT (symb->GetStorageClass () == StorageClass::C_MOU);
+		ASSERT (symb.GetStorageClass () == StorageClass::C_MOU);
 		auto childObject = ObjectFactory (symb);
 		childObject->Process (symbolFile);
 		AddChild (std::move (childObject));
@@ -236,7 +236,7 @@ std::string Union::GetType () const
 }
 
 
-Object* Union::Create (const SymbolConstPtr& symbol) const
+Object* Union::Create (const SymbolEntry& symbol) const
 {
 	return MakeRaw<Union> (symbol);
 }
@@ -254,25 +254,25 @@ void Pointer::ProcessImpl (const SymbolFile& symbolFile)
 
 std::string Pointer::GetType () const
 {
-	return "*" + ::ToString (symbol->GetTypeSpecifier ().GetBaseType ());
+	return "*" + ::ToString (symbol.GetTypeSpecifier ().GetBaseType ());
 }
 
 
-Object* Pointer::Create (const SymbolConstPtr& symbol) const
+Object* Pointer::Create (const SymbolEntry& symbol) const
 {
 	return MakeRaw<Pointer> (symbol);
 }
 
 
-const TypeInfo Array::typeInfo (Array (nullptr), TypeDescriptor (BaseType::Void, DerivedType::Array));
+const TypeInfo Array::typeInfo (Array (SymbolEntry {ForDeserialization}), TypeDescriptor (BaseType::Void, DerivedType::Array));
 
 
-static Owner<Object> ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol);
+static Owner<Object> ObjectFactoryForBasicTypes (const SymbolEntry& symbol);
 
 
-static Owner<Object> ObjectFactoryForArray (const SymbolConstPtr& symbol)
+static Owner<Object> ObjectFactoryForArray (const SymbolEntry& symbol)
 {
-	const auto& typeDescriptor = symbol->GetTypeSpecifier ();
+	const auto& typeDescriptor = symbol.GetTypeSpecifier ();
 	ASSERT (typeDescriptor.GetFirstDerived () == DerivedType::Array);
 
 	const auto& baseType = typeDescriptor.GetBaseType ();
@@ -287,20 +287,21 @@ static Owner<Object> ObjectFactoryForArray (const SymbolConstPtr& symbol)
 
 void Array::ProcessImpl (const SymbolFile& symbolFile)
 {
-	const TypeDescriptor& typeDescriptor = symbol->GetTypeSpecifier ();
+	const TypeDescriptor& typeDescriptor = symbol.GetTypeSpecifier ();
 	INSPECT (typeDescriptor.GetSecondDerived () == DerivedType::None, "What is the role of 2nd DerivedType?");
 
-	const AuxiliaryConstPtr& auxEntry = symbol->GetAuxiliaryEntry ();
-	INSPECT (auxEntry->GetNumOfLineNumberEntries () == 0u);
+	ASSERT (symbol.HasAuxiliaryEntry ());
+	const AuxEntry& auxEntry = symbol.GetAuxiliaryEntry ();
+	INSPECT (auxEntry.GetNumOfLineNumberEntries () == 0u);
 
-	const UInt16 dimSize = auxEntry->GetArrayDimensionSize ();
+	const UInt16 dimSize = auxEntry.GetArrayDimensionSize ();
 	ASSERT (dimSize != 0u);
 
-	const UInt16 reloc  = auxEntry->GetNumOfRelocationEntries ();
+	const UInt16 reloc  = auxEntry.GetNumOfRelocationEntries ();
 	ASSERT (reloc % (16 * dimSize) == 0u);
 	const UInt16 offset = reloc / 16 / dimSize;
 
-	const UInt32 index  = auxEntry->GetSectionLength ();
+	const UInt32 index  = auxEntry.GetSectionLength ();
 	const BaseType baseType = typeDescriptor.GetBaseType ();
 	ASSERT (baseType == BaseType::Struct && index != 0u ||
 			baseType != BaseType::Struct && index == 0u);
@@ -317,12 +318,13 @@ std::string Array::GetType () const
 {
 	TODO;
 
-	const AuxiliaryConstPtr& auxEntry = symbol->GetAuxiliaryEntry ();
-	const UInt16& dimSize = auxEntry->GetArrayDimensionSize ();
+	ASSERT (symbol.HasAuxiliaryEntry ());
+	const AuxEntry& auxEntry = symbol.GetAuxiliaryEntry ();
+	const UInt16& dimSize = auxEntry.GetArrayDimensionSize ();
 
-	std::string result = ::ToString (symbol->GetTypeSpecifier ().GetBaseType ());
+	std::string result = ::ToString (symbol.GetTypeSpecifier ().GetBaseType ());
 	result += "[" + std::to_string (dimSize) + "]";
-	if (auxEntry->IsMultidimensional ()) {
+	if (auxEntry.IsMultidimensional ()) {
 		TODO;
 	}
 
@@ -330,13 +332,13 @@ std::string Array::GetType () const
 }
 
 
-Object* Array::Create (const SymbolConstPtr& symbol) const
+Object* Array::Create (const SymbolEntry& symbol) const
 {
 	return MakeRaw<Array> (symbol);
 }
 
 
-ArrayElement::ArrayElement (const SymbolConstPtr& symbol, const UInt16 offset, const UInt16 index)
+ArrayElement::ArrayElement (const SymbolEntry& symbol, const UInt16 offset, const UInt16 index)
 	: Object	(symbol)
 	, offset	(offset)
 	, index		(index)
@@ -344,12 +346,12 @@ ArrayElement::ArrayElement (const SymbolConstPtr& symbol, const UInt16 offset, c
 }
 
 
-static SymbolConstPtr CreateDecreasedDimensionSymbol (const SymbolEntry& symbol)
+static SymbolEntry CreateDecreasedDimensionSymbol (const SymbolEntry& symbol)
 {
-	auto symbolCopy = std::make_shared<SymbolEntry> (symbol);
-	auto auxEntryCopy = std::make_shared<AuxEntry> (*symbol.GetAuxiliaryEntry ());
+	auto symbolCopy = symbol; // #Note: unnecessary aux copy
+	auto auxEntryCopy = std::make_unique<AuxEntry> (symbol.GetAuxiliaryEntry ());
 	auxEntryCopy->DecreaseDimension ();
-	symbolCopy->SetAuxiliaryEntry (auxEntryCopy);
+	symbolCopy.SetAuxiliaryEntry (std::move (auxEntryCopy));
 	return symbolCopy;
 }
 
@@ -358,12 +360,12 @@ void ArrayElement::ProcessImpl (const SymbolFile& symbolFile)
 {
 	name = "[" + std::to_string (index) + "]";
 
-	const AuxiliaryConstPtr& auxEntry = symbol->GetAuxiliaryEntry ();
-	ASSERT (auxEntry != nullptr);
+	ASSERT (symbol.HasAuxiliaryEntry ());
+	const AuxEntry& auxEntry = symbol.GetAuxiliaryEntry ();
 
 	Owner<Object> object;
-	if (auxEntry->IsMultidimensional ()) {
-		object = std::make_unique<Array> (CreateDecreasedDimensionSymbol (*symbol));
+	if (auxEntry.IsMultidimensional ()) {
+		object = std::make_unique<Array> (CreateDecreasedDimensionSymbol (symbol));
 	} else {
 		object = ObjectFactoryForArray (symbol);
 	}
@@ -379,7 +381,7 @@ std::string ArrayElement::GetType () const
 }
 
 
-Object* ArrayElement::Create (const SymbolConstPtr& symbol) const
+Object* ArrayElement::Create (const SymbolEntry& symbol) const
 {
 	TODO; // #ToDo: invalid state
 }
@@ -399,7 +401,7 @@ uint32_t ArrayElement::CalcOffset () const
 }
 
 
-const TypeInfo BitField::typeInfo (BitField (nullptr), TypeDescriptor (BaseType::Void));
+const TypeInfo BitField::typeInfo (BitField (SymbolEntry {ForDeserialization}), TypeDescriptor (BaseType::Void));
 
 
 void BitField::ProcessImpl (const SymbolFile& symbolFile)
@@ -410,7 +412,7 @@ void BitField::ProcessImpl (const SymbolFile& symbolFile)
 std::string BitField::GetType () const
 {
 	std::string result ("B");
-	const auto baseType = symbol->GetTypeSpecifier ().GetBaseType ();
+	const auto baseType = symbol.GetTypeSpecifier ().GetBaseType ();
 	if (baseType == BaseType::UInt32) {
 		result += "32";
 	} else if (baseType == BaseType::UInt16_Other || baseType == BaseType::UInt16) {
@@ -420,7 +422,7 @@ std::string BitField::GetType () const
 }
 
 
-Object* BitField::Create (const SymbolConstPtr& symbol) const
+Object* BitField::Create (const SymbolEntry& symbol) const
 {
 	return MakeRaw<BitField> (symbol);
 }
@@ -428,7 +430,8 @@ Object* BitField::Create (const SymbolConstPtr& symbol) const
 
 std::string BitField::GetMask () const
 {
-	const uint16_t maskSize = symbol->GetAuxiliaryEntry ()->GetNumOfRelocationEntries ();
+	ASSERT (symbol.HasAuxiliaryEntry ());
+	const uint16_t maskSize = symbol.GetAuxiliaryEntry ().GetNumOfRelocationEntries ();
 	uint64_t mask = 0;
 	for (uint16_t i = 0u; i < maskSize; ) {
 		mask += 1;
@@ -436,7 +439,7 @@ std::string BitField::GetMask () const
 			mask <<= 1;
 		}
 	}
-	const uint32_t maskOffset = symbol->GetValue ();
+	const uint32_t maskOffset = symbol.GetValue ();
 	mask <<= maskOffset;
 
 	Utilities::Variable<uint32_t> var (mask);
@@ -444,9 +447,9 @@ std::string BitField::GetMask () const
 }
 
 
-static Owner<Object> ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol)
+static Owner<Object> ObjectFactoryForBasicTypes (const SymbolEntry& symbol)
 {
-	const auto& typeDescriptor = symbol->GetTypeSpecifier ();
+	const auto& typeDescriptor = symbol.GetTypeSpecifier ();
 	const auto& baseType = typeDescriptor.GetBaseType ();
 	switch (baseType) {
 	case BaseType::Void:
@@ -481,9 +484,9 @@ static Owner<Object> ObjectFactoryForBasicTypes (const SymbolConstPtr& symbol)
 }
 
 
-Owner<Object> File::COFF::ObjectFactory (const SymbolConstPtr& symbol)
+Owner<Object> File::COFF::ObjectFactory (const SymbolEntry& symbol)
 {
-	const auto& typeDescriptor = symbol->GetTypeSpecifier ();
+	const auto& typeDescriptor = symbol.GetTypeSpecifier ();
 	const auto& derivedType = typeDescriptor.GetFirstDerived ();
 	switch (derivedType) {
 	case DerivedType::Pointer:
@@ -512,7 +515,7 @@ Owner<Object> File::COFF::ObjectFactory (const SymbolConstPtr& symbol)
 		TODO; // #TODO
 	}
 
-	if (symbol->GetStorageClass () == StorageClass::C_FIELD) {
+	if (symbol.GetStorageClass () == StorageClass::C_FIELD) {
 		return std::make_unique<BitField> (symbol);
 	}
 

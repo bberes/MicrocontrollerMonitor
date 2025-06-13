@@ -12,13 +12,11 @@
 #include "FileHandlerTypes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 FILEHANDLER_EXPORT
 std::shared_ptr<SymbolFile> ReadSymbolFile (const QString& fileName);
 
-}
 }
 
 

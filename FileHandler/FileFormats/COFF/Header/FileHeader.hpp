@@ -11,8 +11,7 @@
 #include "TargetID.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class FileHeader final
 	: private Serializable
@@ -44,7 +43,6 @@ private:
 	UInt16		targetID;
 };
 
-}
 }
 
 

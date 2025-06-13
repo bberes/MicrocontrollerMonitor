@@ -10,6 +10,26 @@
 #include "AuxiliaryEntry.hpp"
 
 
+File::COFF::SymbolEntry::SymbolEntry (const SymbolEntry& src)
+	: TableEntry			(RegularConstructor)
+	, symbolName			{}
+	, symbolValue			(src.symbolValue)
+	, sectionNumber			(src.sectionNumber)
+	, reserved				(src.reserved)
+	, storageClass			(src.storageClass)
+	, numOfAuxiliaryEntries	(src.numOfAuxiliaryEntries)
+	, auxiliaryEntry		(nullptr)
+{
+	// #Note: std::array<UInt8, 8u> is also an option
+	static_assert (sizeof (symbolName) == 8u);
+	std::memcpy (symbolName, src.symbolName, sizeof (symbolName));
+
+	if (src.auxiliaryEntry != nullptr) {
+		auxiliaryEntry = std::make_unique<AuxEntry> (*src.auxiliaryEntry);
+	}
+}
+
+
 File::COFF::SymbolEntry::SymbolEntry (DeserializationSelector ds)
 	: TableEntry		(ds)
 	, auxiliaryEntry	(nullptr)
@@ -18,6 +38,21 @@ File::COFF::SymbolEntry::SymbolEntry (DeserializationSelector ds)
 
 
 File::COFF::SymbolEntry::~SymbolEntry () = default;
+
+
+const File::COFF::AuxEntry& File::COFF::SymbolEntry::GetAuxiliaryEntry () const
+{
+	if (auxiliaryEntry == nullptr) {
+		TODO; // #ToDo: illegal state
+	}
+	return *auxiliaryEntry;
+}
+
+
+void File::COFF::SymbolEntry::SetAuxiliaryEntry (Owner<AuxEntry> auxEntry)
+{
+	this->auxiliaryEntry = std::move (auxiliaryEntry);
+}
 
 
 std::string File::COFF::SymbolEntry::GetName (const SymbolFile& symbolFile) const
@@ -61,9 +96,9 @@ size_t File::COFF::SymbolEntry::Read (DataStream& is)
 
 	if (numOfAuxiliaryEntries != 0u) {
 //		Q_ASSERT (numOfAuxiliaryEntries == 1u);
-		auto auxEntryNotConst = std::make_shared<AuxEntry> (ForDeserialization);
+		auto auxEntryNotConst = std::make_unique<AuxEntry> (ForDeserialization);
 		size += auxEntryNotConst->Read (is);
-		auxiliaryEntry = auxEntryNotConst;
+		auxiliaryEntry = std::move (auxEntryNotConst);
 	}
 
 	return size;

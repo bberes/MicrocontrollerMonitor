@@ -7,14 +7,13 @@
 #include <vector>
 
 // #FileHandler
-#include "FileFormats\COFF\Types\EntryTypes.hpp"
+#include "FileFormats\COFF\SymbolTable\SymbolEntry.hpp"
 #include "FileHandlerTypes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
-using SymbolProcessor = std::function<void (const SymbolConstPtr&)>;
+using SymbolProcessor = std::function<void (const SymbolEntry&)>;
 
 
 class RelevantSymbols final {
@@ -28,11 +27,10 @@ public:
 	void				Enumerate	(const SymbolProcessor& process) const;
 
 private:
-	std::vector<SymbolConstPtr>	symbols;
+	std::vector<SymbolEntry>	symbols;
 //	std::vector<std::string>	names;
 };
 
-}
 }
 
 

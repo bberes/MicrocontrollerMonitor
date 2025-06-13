@@ -56,15 +56,15 @@ std::string File::COFF::SymbolFile::GetName (const UInt32 index) const
 }
 
 
-File::COFF::SymbolConstPtr File::COFF::SymbolFile::GetEntryByIndex (const UInt32 index) const
+File::COFF::SymbolEntry File::COFF::SymbolFile::GetEntryByIndex (const UInt32 index) const
 {
 	const auto startIndex = header.GetStartAddressOfSymbolTable () + index * TableEntry::Size ();
 	ByteArray symbolArray (byteArray.data () + startIndex, 2u * TableEntry::Size ());
 	DataStream symbolStream (symbolArray);
 	symbolStream.setByteOrder (DataStream::ByteOrder::LittleEndian);
 
-	auto symbol (std::make_shared<SymbolEntry> (ForDeserialization));
-	symbol->Read (symbolStream);
+	SymbolEntry symbol (ForDeserialization);
+	symbol.Read (symbolStream);
 	return symbol;
 }
 

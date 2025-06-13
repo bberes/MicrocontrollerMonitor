@@ -15,8 +15,7 @@
 #include "TargetID.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class SectionHeaderBase
 	: private Serializable
@@ -87,7 +86,6 @@ private:
 	virtual size_t		WriteImpl		(DataStream& os) const override;
 };
 
-}
 }
 
 

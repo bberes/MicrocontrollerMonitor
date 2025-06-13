@@ -45,9 +45,6 @@
     <Filter Include="Source Files\FileFormats\COFF\SymbolTable">
       <UniqueIdentifier>{b21c5a3f-e55f-4b82-95a2-009b986628d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\FileFormats\COFF\Types">
-      <UniqueIdentifier>{7bc79716-2348-4c51-9140-aba46ec0b15b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\FileFormats\COFF\Utilities">
       <UniqueIdentifier>{239717da-5105-40f1-b271-5acba1356abe}</UniqueIdentifier>
     </Filter>
@@ -91,12 +88,6 @@
     </ClInclude>
     <ClInclude Include="FileFormats\COFF\SymbolTable\TypeDescriptor.hpp">
       <Filter>Header Files\FileFormats\COFF\SymbolTable</Filter>
-    </ClInclude>
-    <ClInclude Include="FileFormats\COFF\Types\EntryTypes.hpp">
-      <Filter>Header Files\FileFormats\COFF\Types</Filter>
-    </ClInclude>
-    <ClInclude Include="FileFormats\COFF\Types\ObjectProcessor.hpp">
-      <Filter>Header Files\FileFormats\COFF\Types</Filter>
     </ClInclude>
     <ClInclude Include="FileFormats\COFF\Utilities\RelevantSymbols.hpp">
       <Filter>Header Files\FileFormats\COFF\Utilities</Filter>

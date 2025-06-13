@@ -18,7 +18,6 @@
 
 // #FileHandler
 #include "Header\FileHeader.hpp"
-#include "Types\EntryTypes.hpp"
 #include "FileHandlerTypes.hpp"
 
 
@@ -35,8 +34,7 @@ public:
 };
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class FILEHANDLER_EXPORT SymbolFile final : public ISymbolFile {
 public:
@@ -44,18 +42,18 @@ public:
 	explicit SymbolFile (DeserializationSelector, const ByteArray& byteArray);
 	virtual ~SymbolFile () override;
 
-	void				Enumerate		(const std::function<void (const SymbolEntry&)>& process) const;
-	std::string			GetName			(const UInt32 index) const;
-	SymbolConstPtr		GetEntryByIndex	(const UInt32 index) const;
+	void			Enumerate		(const std::function<void (const SymbolEntry&)>& process) const;
+	std::string		GetName			(const UInt32 index) const;
+	SymbolEntry		GetEntryByIndex	(const UInt32 index) const;
 
-	virtual size_t		Read			(DataStream& is) override;
-	virtual size_t		Write			(DataStream& os) const override;
+	virtual size_t	Read			(DataStream& is) override;
+	virtual size_t	Write			(DataStream& os) const override;
 
 private:
 //	SymbolFile ();
 //	SymbolFile (const ByteArray& byteArray);
 	SymbolFile (const SymbolFile&) = delete;
-	SymbolFile&			operator=		(const SymbolFile&) = delete;
+	SymbolFile&		operator=		(const SymbolFile&) = delete;
 
 private:
 	ByteArray							byteArray;
@@ -69,7 +67,6 @@ private:
 //	std::vector<>		strings;
 };
 
-}
 }
 
 

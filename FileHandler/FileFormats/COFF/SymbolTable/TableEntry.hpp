@@ -13,8 +13,7 @@ enum class EntryType {
 };
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 class TableEntry
 	: private Serializable
@@ -34,7 +33,6 @@ public:
 	static constexpr size_t	Size	() { return 18u; }
 };
 
-}
 }
 
 

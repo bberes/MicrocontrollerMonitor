@@ -10,8 +10,7 @@
 #include "TreeNodes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 namespace {
 
@@ -29,11 +28,11 @@ TypeInfo::TypeInfo (const Object& object, const TypeDescriptor& typeDescriptor)
 	auto& map = GetTypeInformations ();
 	ASSERT (map.count (typeDescriptor) == 0u);
 
-	map.insert (std::pair<UInt16, Owner<const Object>> (typeDescriptor, object.Create (nullptr)));
+	map.insert (std::pair<UInt16, Owner<const Object>> (typeDescriptor, object.Create (SymbolEntry (ForDeserialization))));
 }
 
 
-Object* TypeInfo::Create (const TypeDescriptor& typeDescriptor, const SymbolConstPtr& symbol)
+Object* TypeInfo::Create (const TypeDescriptor& typeDescriptor, const SymbolEntry& symbol)
 {
 	UInt16 key = typeDescriptor;
 	INSPECT ((key & 0xFFF0) == 0u); // Current limitation. May change later.
@@ -45,5 +44,4 @@ Object* TypeInfo::Create (const TypeDescriptor& typeDescriptor, const SymbolCons
 	return map[key]->Create (symbol);
 }
 
-}
 }

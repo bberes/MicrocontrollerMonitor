@@ -12,8 +12,7 @@
 #include "Types\BaseTypes.hpp"
 
 
-namespace File {
-namespace COFF {
+namespace File::COFF {
 
 enum class BaseType : UInt8 {
 	Void,
@@ -77,7 +76,6 @@ constexpr char TextUChar[]	= "UCHAR";
 constexpr char TextUInt16[]	= "U16";
 constexpr char TextUInt32[]	= "U32";
 
-}
 }
 
 
