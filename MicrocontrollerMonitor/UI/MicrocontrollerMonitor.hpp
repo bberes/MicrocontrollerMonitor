@@ -31,14 +31,14 @@ private slots:
 private:
 	Owner<Ui::MicrocontrollerMonitorClass>	ui;
 
-	Environment* const						environment;
+	Owner<Environment>						environment;
 
-	QWidget*								connectionWidget;
-	LoggerWidget*							loggerWidget;
+	Owner<QWidget>							connectionWidget;
+	Owner<LoggerWidget>						loggerWidget;
 	ProcessorView*							processorView;
-	WatchWindowWidget*						watchWindow;
-	SymbolsWidget*							symbolsWidget;
-	RecorderWidget*							recorderWidget;
+	Owner<WatchWindowWidget>				watchWindow;
+	Owner<SymbolsWidget>					symbolsWidget;
+	Owner<RecorderWidget>					recorderWidget;
 };
 
 

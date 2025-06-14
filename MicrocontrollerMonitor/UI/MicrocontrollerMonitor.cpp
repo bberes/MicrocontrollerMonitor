@@ -32,13 +32,13 @@ static void ResetWidgetOfDockWidget (QDockWidget* dw, QWidget* w)
 MicrocontrollerMonitor::MicrocontrollerMonitor (LogData& logData, QWidget* parent)
 	: QMainWindow		(parent)
 	, ui				(std::make_unique<Ui::MicrocontrollerMonitorClass> ())
-	, environment		(new Environment (logData))
-	, connectionWidget	(nullptr)
-	, loggerWidget		(new LoggerWidget (logData))
+	, environment		(std::make_unique<Environment>       (logData))
+	, connectionWidget	(std::make_unique<ConnectionWidget>  (*environment))				// #Note: MakeChild
+	, loggerWidget		(std::make_unique<LoggerWidget>      (logData))						// #Note: MakeChild
 	, processorView		(nullptr)
-	, watchWindow		(new WatchWindowWidget (environment->GetLogger ()))
-	, symbolsWidget		(new SymbolsWidget (*watchWindow))
-	, recorderWidget	(new RecorderWidget (*environment))
+	, watchWindow		(std::make_unique<WatchWindowWidget> (environment->GetLogger ()))	// #Note: MakeChild
+	, symbolsWidget		(std::make_unique<SymbolsWidget>     (*watchWindow))				// #Note: MakeChild
+	, recorderWidget	(std::make_unique<RecorderWidget>    (*environment))				// #Note: MakeChild
 {
 	ui->setupUi (this);
 
@@ -47,12 +47,10 @@ MicrocontrollerMonitor::MicrocontrollerMonitor (LogData& logData, QWidget* paren
 
 	SetUpMenuView ();
 
-	connectionWidget = new ConnectionWidget (*environment); // #ToDo move to ctor init list
-
 	watchWindow->SetProtocol (environment->GetConnection ().GetProtocol ()); // #ToDo: rethink protocol access
 
-	ResetWidgetOfDockWidget (ui->dockWidgetConnection, connectionWidget);
-	ResetWidgetOfDockWidget (ui->dockWidgetLogger    , loggerWidget    );
+	ResetWidgetOfDockWidget (ui->dockWidgetConnection, connectionWidget.get ());
+	ResetWidgetOfDockWidget (ui->dockWidgetLogger    , loggerWidget    .get ());
 
 	processorView = new ProcessorView (ui->centralWidget);
 	ui->horizontalLayout->addWidget (processorView);
@@ -64,13 +62,7 @@ MicrocontrollerMonitor::MicrocontrollerMonitor (LogData& logData, QWidget* paren
 
 MicrocontrollerMonitor::~MicrocontrollerMonitor ()
 {
-	delete recorderWidget;
-	delete connectionWidget;
-	delete loggerWidget;
 	delete processorView;
-	delete symbolsWidget;
-	delete watchWindow;
-	delete environment;
 }
 
 
