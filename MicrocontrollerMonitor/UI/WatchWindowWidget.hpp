@@ -18,11 +18,10 @@ class WatchWindowWidget final : public ToggleableWidget {
 	Q_OBJECT
 
 public:
-	explicit WatchWindowWidget (Utilities::Logger& logger, QWidget* parent = nullptr);
+	explicit WatchWindowWidget (Environment& environment, QWidget* parent = nullptr);
 	~WatchWindowWidget ();
 
 	void			SetProtocol		(Communication::Protocol& protocol);
-	void			AddVariable		(const QString& name, const QString& address, const QString& typeName);
 
 private slots:
 	void			ChangeRate		();
@@ -37,7 +36,7 @@ private:
 private:
 	Owner<Ui::WatchWindowWidgetClass>	ui;
 
-	WatchWindowTableModel*				tableModel;
+	WatchWindowTableModel&				tableModel;
 
 	QTimer*								timer;
 

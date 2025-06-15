@@ -33,12 +33,12 @@ MicrocontrollerMonitor::MicrocontrollerMonitor (LogData& logData, QWidget* paren
 	: QMainWindow		(parent)
 	, ui				(std::make_unique<Ui::MicrocontrollerMonitorClass> ())
 	, environment		(std::make_unique<Environment>       (logData))
-	, connectionWidget	(std::make_unique<ConnectionWidget>  (*environment))				// #Note: MakeChild
-	, loggerWidget		(std::make_unique<LoggerWidget>      (logData))						// #Note: MakeChild
+	, connectionWidget	(std::make_unique<ConnectionWidget>  (*environment)) // #Note: MakeChild
+	, loggerWidget		(std::make_unique<LoggerWidget>      (logData))      // #Note: MakeChild
 	, processorView		(nullptr)
-	, watchWindow		(std::make_unique<WatchWindowWidget> (environment->GetLogger ()))	// #Note: MakeChild
-	, symbolsWidget		(std::make_unique<SymbolsWidget>     (*watchWindow))				// #Note: MakeChild
-	, recorderWidget	(std::make_unique<RecorderWidget>    (*environment))				// #Note: MakeChild
+	, watchWindow		(std::make_unique<WatchWindowWidget> (*environment)) // #Note: MakeChild
+	, symbolsWidget		(std::make_unique<SymbolsWidget>     (*environment)) // #Note: MakeChild
+	, recorderWidget	(std::make_unique<RecorderWidget>    (*environment)) // #Note: MakeChild
 {
 	ui->setupUi (this);
 

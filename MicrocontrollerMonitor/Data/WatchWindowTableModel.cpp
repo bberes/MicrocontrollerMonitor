@@ -8,7 +8,7 @@
 #include "Data\Variable.hpp"
 
 
-WatchWindowTableModel::WatchWindowTableModel (QObject* parent)
+WatchWindowTableModel::WatchWindowTableModel (QObject* parent/* = nullptr*/)
 	: QAbstractTableModel (parent)
 {
 }
@@ -22,7 +22,7 @@ void WatchWindowTableModel::AddVariable (const QString& name, const QString& add
 }
 
 
-static const QString GUID ("{12C1DA00-0418-4BD5-AF68-32FFB4E85A8E}");
+static const QString GUID ("{12C1DA00-0418-4BD5-AF68-32FFB4E85A8E}"); // #ToDo: move into Environment.cpp
 
 
 bool WatchWindowTableModel::LoadState (DataStream& ds)

@@ -24,7 +24,7 @@
 static const QString configFileName (".RuntimeCache\\ConnectionDefaults.cfg");
 
 
-ConnectionWidget::ConnectionWidget (Environment& environment, QWidget* parent)
+ConnectionWidget::ConnectionWidget (Environment& environment, QWidget* parent/* = nullptr*/)
 	: QWidget		(parent)
 	, ui			(std::make_unique<Ui::ConnectionWidgetClass> ())
 	, settings		(nullptr)

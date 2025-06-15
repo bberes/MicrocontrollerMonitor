@@ -20,7 +20,8 @@
 #include "FileFormats\COFF\SymbolFileReader.hpp"
 
 // #MicrocontrollerMonitor
-#include "WatchWindowWidget.hpp"
+#include "Data\Environment.hpp"
+#include "Data\WatchWindowTableModel.hpp"
 
 
 static const QString configFileName (".RuntimeCache\\SymbolCache.cfg");
@@ -79,11 +80,11 @@ static void OverrideCopyShortcutOn (QListWidget* listWidget)
 }
 
 
-SymbolsWidget::SymbolsWidget (WatchWindowWidget& ww, QWidget* parent)
+SymbolsWidget::SymbolsWidget (Environment& environment, QWidget* parent/* = nullptr*/)
 	: ToggleableWidget	(parent)
 	, ui				(std::make_unique<Ui::SymbolsWidgetClass> ())
-	, ww				(ww)
 	, data				(std::make_unique<Data> ())
+	, wwTableModel		(environment.GetWWTableModel ())
 {
 	ui->setupUi (this);
 
@@ -274,10 +275,8 @@ void SymbolsWidget::AddSelectedToWatch ()
 	const auto& selectedItems = ui->listWidget->selectedItems ();
 	for (auto& item : selectedItems) {
 		const Entry& entry = data->Get (item->text ());
-		ww.AddVariable (entry.name, entry.address, entry.typeName);
+		wwTableModel.AddVariable (entry.name, entry.address, entry.typeName);
 	}
-
-	ww.show ();
 }
 
 

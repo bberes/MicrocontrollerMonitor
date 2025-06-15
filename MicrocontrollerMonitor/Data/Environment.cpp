@@ -13,18 +13,24 @@
 // #MicrocontrollerMonitor
 #include "EventLogger.hpp"
 #include "WatchWindowTable.hpp"
+#include "WatchWindowTableModel.hpp"
 
 
 Environment::Environment (LogData& logData)
 	: logger			(std::make_unique<EventLogger>					(logData, Utilities::LogLevel::Info)) // #ToDo: make log level adjustable (i.e. with UI control)
 	, connection		(std::make_unique<Communication::Connection>	(*logger))
+	, wwTableModel		(std::make_unique<WatchWindowTableModel>		())
 	, recorderParams	(std::make_unique<WatchWindow::Table>			())
 {
+	LoadTableModel ();
 	LoadRecorderParams ();
 }
 
 
-Environment::~Environment () = default;
+Environment::~Environment ()
+{
+	StoreTableModel ();
+}
 
 
 Utilities::Logger& Environment::GetLogger ()
@@ -36,6 +42,29 @@ Utilities::Logger& Environment::GetLogger ()
 Communication::Connection& Environment::GetConnection ()
 {
 	return *connection;
+}
+
+
+static const QString configFileName (".RuntimeCache\\WatchWindowVariables.cfg");
+
+
+void Environment::LoadTableModel () // #ToDo
+{
+	QFile config (configFileName);
+	if (config.open (QIODevice::ReadOnly)) {
+		DataStream ds (&config);
+		wwTableModel->LoadState (ds);
+	}
+}
+
+
+void Environment::StoreTableModel () const // #ToDo
+{
+	QFile config (configFileName);
+	if (config.open (QIODevice::WriteOnly)) {
+		DataStream ds (&config);
+		wwTableModel->StoreState (ds);
+	}
 }
 
 

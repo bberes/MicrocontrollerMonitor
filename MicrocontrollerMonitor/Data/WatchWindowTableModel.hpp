@@ -21,7 +21,7 @@ class WatchWindowTableModel final
 	Q_OBJECT
 
 public:
-	WatchWindowTableModel (QObject* parent = nullptr);
+	explicit WatchWindowTableModel (QObject* parent = nullptr);
 
 	void						AddVariable		(const QString& name, const QString& address, const QString& typeName);
 	Communication::Variable		GetVariable		(const QModelIndex& index) const;

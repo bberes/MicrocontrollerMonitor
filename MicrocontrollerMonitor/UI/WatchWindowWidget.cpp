@@ -17,12 +17,10 @@
 #include "CommunicationProtocol.hpp"
 
 // #MicrocontrollerMonitor
+#include "Data\Environment.hpp"
 #include "Data\WatchWindowTableModel.hpp"
 #include "CustomEvent.hpp"
 #include "Utilities.hpp"
-
-
-static const QString configFileName (".RuntimeCache\\WatchWindowVariables.cfg");
 
 
 class DelegateWithRefreshSuspension : public QStyledItemDelegate {
@@ -59,16 +57,16 @@ private:
 };
 
 
-WatchWindowWidget::WatchWindowWidget (Utilities::Logger& logger, QWidget* parent)
+WatchWindowWidget::WatchWindowWidget (Environment& environment, QWidget* parent/* = nullptr*/)
 	: ToggleableWidget	(parent)
 	, ui				(std::make_unique<Ui::WatchWindowWidgetClass> ())
-	, tableModel		(new WatchWindowTableModel)
+	, tableModel		(environment.GetWWTableModel ())
 	, timer				(MakeChild<QTimer> (*this))
 	, protocol			(nullptr)
 {
 	ui->setupUi (this);
 
-	ui->tableView->setModel (tableModel);
+	ui->tableView->setModel (&tableModel);
 	ui->tableView->setItemDelegate (new DelegateWithRefreshSuspension (*ui->checkBox, ui->tableView));
 	ui->tableView->setEditTriggers (QAbstractItemView::AllEditTriggers);
 
@@ -77,39 +75,19 @@ WatchWindowWidget::WatchWindowWidget (Utilities::Logger& logger, QWidget* parent
 	connect (ui->checkBox  , &QCheckBox::toggled             , this, &WatchWindowWidget::AutoRefresh  );
 	connect (ui->pushButton, &QPushButton::pressed           , this, &WatchWindowWidget::RequestValues);
 	connect (timer         , &QTimer::timeout                , this, &WatchWindowWidget::RequestValues);
-	connect (tableModel    , &QAbstractItemModel::dataChanged, this, &WatchWindowWidget::HandleChange );
-
-	// #TODO It should be elsewhere!
-	QFile config (configFileName);
-	if (config.open (QIODevice::ReadOnly)) {
-		DataStream ds (&config);
-		tableModel->LoadState (ds);
-	}
+	connect (&tableModel   , &QAbstractItemModel::dataChanged, this, &WatchWindowWidget::HandleChange );
 }
 
 
 WatchWindowWidget::~WatchWindowWidget ()
 {
-	// #TODO ?
-	QFile config (configFileName);
-	if (config.open (QIODevice::WriteOnly)) {
-		DataStream ds (&config);
-		tableModel->StoreState (ds);
-	}
-
-	delete tableModel;
+	disconnect (&tableModel, &QAbstractItemModel::dataChanged, this, &WatchWindowWidget::HandleChange);
 }
 
 
 void WatchWindowWidget::SetProtocol (Communication::Protocol& protocol)
 {
 	this->protocol = &protocol;
-}
-
-
-void WatchWindowWidget::AddVariable (const QString& name, const QString& address, const QString& typeName)
-{
-	tableModel->AddVariable (name, address, typeName);
 }
 
 
@@ -136,10 +114,10 @@ void WatchWindowWidget::AutoRefresh (bool autoRefresh)
 
 void WatchWindowWidget::RequestValues ()
 {
-	protocol->AddListener (*tableModel);
+	protocol->AddListener (tableModel);
 	QCoreApplication::postEvent (this, MakeEvent<CustomEvent> ([this] () {
 		constexpr UInt8 processorID = 0u;
-		const auto& memoryRefs = tableModel->GetMemoryRefs ();
+		const auto& memoryRefs = tableModel.GetMemoryRefs ();
 		const Communication::ReadVariablesRequest valuesRequest (processorID, memoryRefs);
 		protocol->SendRequest (valuesRequest);
 	}));
@@ -152,7 +130,7 @@ void WatchWindowWidget::HandleChange (const QModelIndex& topLeft, const QModelIn
 		TODO; // #ToDo
 	}
 
-	RequestWrite (tableModel->GetVariable (topLeft));
+	RequestWrite (tableModel.GetVariable (topLeft));
 }
 
 

@@ -15,7 +15,7 @@ class SymbolsWidget final : public ToggleableWidget {
 	Q_OBJECT
 
 public:
-	explicit SymbolsWidget (WatchWindowWidget& ww, QWidget* parent = nullptr);
+	explicit SymbolsWidget (Environment& environment, QWidget* parent = nullptr);
 	~SymbolsWidget ();
 
 	void			Load				(const QString& fileName);
@@ -43,10 +43,9 @@ private:
 	struct Entry;
 
 	Owner<Ui::SymbolsWidgetClass>	ui;
-
-	WatchWindowWidget&				ww;
-
 	Owner<Data>						data;
+
+	WatchWindowTableModel&			wwTableModel;
 };
 
 
