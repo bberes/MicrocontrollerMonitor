@@ -51,7 +51,7 @@ const File::COFF::AuxEntry& File::COFF::SymbolEntry::GetAuxiliaryEntry () const
 
 void File::COFF::SymbolEntry::SetAuxiliaryEntry (Owner<AuxEntry> auxEntry)
 {
-	this->auxiliaryEntry = std::move (auxiliaryEntry);
+	this->auxiliaryEntry = std::move (auxEntry);
 }
 
 
