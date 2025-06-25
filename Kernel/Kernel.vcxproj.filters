@@ -107,6 +107,9 @@
     <ClInclude Include="Utilities\StringFunctions.hpp">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Utilities\TypeTraits.hpp">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
     <ClInclude Include="Utilities\Variable.hpp">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>

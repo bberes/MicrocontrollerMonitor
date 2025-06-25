@@ -35,6 +35,7 @@
     <ClInclude Include="Utilities\Observer.hpp" />
     <ClInclude Include="Utilities\ScopeExit.hpp" />
     <ClInclude Include="Utilities\StringFunctions.hpp" />
+    <ClInclude Include="Utilities\TypeTraits.hpp" />
     <ClInclude Include="Utilities\Variable.hpp" />
   </ItemGroup>
   <ItemGroup>

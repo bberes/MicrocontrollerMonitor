@@ -7,6 +7,7 @@
 
 // #Kernel
 #include "Types\BaseTypes.hpp"
+#include "Utilities\TypeTraits.hpp"
 
 // #Communication
 #include "MemoryReference.hpp"
@@ -37,9 +38,12 @@ private:
 
 template <typename ValueType, typename AddressType>
 inline Communication::Variable::Variable (ValueType value, AddressType address)
-	: value	(value)
+	: value	(InterpretAs<UInt64> (value))
 	, info	(address, static_cast<VariableSize> (sizeof (ValueType)))
 {
+	static_assert (sizeof (ValueType) <= sizeof (UInt64));
+	static_assert (std::is_arithmetic_v<ValueType>);
+	static_assert (std::is_integral_v<AddressType>);
 }
 
 
@@ -47,9 +51,7 @@ template <typename Type>
 inline Type Communication::Variable::GetValue () const
 {
 	CheckVariableSize (sizeof (Type));
-	Type returnValue {};
-	std::memcpy (&returnValue, &value, sizeof (Type));
-	return returnValue;
+	return InterpretAs<Type> (value);
 }
 
 

@@ -3,6 +3,7 @@
 // #Kernel
 #include "Serialization\ReadWrite.hpp"
 #include "Utilities\Debug.hpp"
+#include "Utilities\TypeTraits.hpp"
 
 
 File::COFF::AuxEntry::AuxEntry (DeserializationSelector ds)
@@ -42,13 +43,7 @@ bool File::COFF::AuxEntry::IsMultidimensional () const
 UInt16 File::COFF::AuxEntry::GetArrayDimensionSize (size_t dimIndex/* = 0u*/) const
 {
 	ASSERT (dimIndex < 5u);
-
-	// #ToDo: extract method: template <typename T, typename From> T InterpretAs (From, offset = 0u)
-	//        with static_assert (sizeof (From) - offset == sizeof (T))
-	UInt16 n = 0u;
-	static_assert (sizeof (n) == 2u);
-	std::memcpy (&n, &notUsed[2 * dimIndex], sizeof (n)); // #ToDo: see above
-	return n;
+	return InterpretAs<UInt16> (notUsed, dimIndex);
 }
 
 

@@ -17,9 +17,10 @@
 
 namespace File::COFF {
 
-class SectionHeaderBase
+class SectionHeaderBase // #ToDo: make it final and use interpreters for COFF 1 and 2 ???
 	: private Serializable
-	, private Deserializable {
+	, private Deserializable
+{
 public:
 	explicit SectionHeaderBase (DeserializationSelector);
 

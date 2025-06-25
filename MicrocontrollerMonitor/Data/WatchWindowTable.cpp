@@ -134,9 +134,7 @@ Communication::Variable WatchWindow::Row::ToVariable () const
 
 	if (typeName == File::COFF::TextFloat) {
 		float v = value.toFloat ();
-		UInt32 r;
-		std::memcpy (&r, &v, sizeof (float));
-		return Communication::Variable (r, addr);
+		return Communication::Variable (v, addr);
 	}
 	if (typeName == File::COFF::TextChar || typeName == File::COFF::TextUChar) {
 		return Communication::Variable (static_cast<UInt8> (ToUInt32 (value)), addr);
