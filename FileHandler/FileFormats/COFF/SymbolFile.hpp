@@ -60,10 +60,10 @@ private:
 
 	FileHeader							header;
 	Owner<OptionalHeader>				optionalHeader;
-	Vector<SectionHeaderCOFF2*>			sectionHeaders;
+	Vector<Owner<SectionHeaderCOFF2>>	sectionHeaders;
 //	Vector<>	;	//	Raw data for each initialized section
 //	Vector<>	;	//	Relocation information for each initialized section
-	Vector<SymbolEntry*>				symbols;
+	Vector<Owner<SymbolEntry>>			symbols;
 //	Vector<>		strings;
 };
 

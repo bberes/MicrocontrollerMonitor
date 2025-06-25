@@ -11,12 +11,7 @@ File::COFF::SymbolTree::SymbolTree (const SymbolFile& symbolFile)
 }
 
 
-File::COFF::SymbolTree::~SymbolTree ()
-{
-	for (auto& object : objects) {
-		delete object;
-	}
-}
+File::COFF::SymbolTree::~SymbolTree () = default;
 
 
 void File::COFF::SymbolTree::EnumerateLeaves (const ObjectProcessor& process) const
@@ -37,6 +32,6 @@ void File::COFF::SymbolTree::Build (const SymbolFile& symbolFile)
 	symbols.Enumerate ([this, &symbolFile] (const SymbolEntry& symbol) {
 		auto object = ObjectFactory (symbol);
 		object->Process (symbolFile);
-		objects.push_back (object.release ());
+		objects.push_back (std::move (object));
 	});
 }

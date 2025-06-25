@@ -27,8 +27,8 @@ public:
 private:
 	void	SetStateOfControls		(bool isConnected);
 	void	AddProtocols			();
-	void	AddConnectionSettings	(ConnectionSettings* settings);
-	void	SetCurrentSettings		(ConnectionSettings* settings);
+	void	AddConnectionSettings	(Owner<ConnectionSettings> settings);
+	void	SetCurrentSettings		(ConnectionSettings& settings);
 
 	bool	LoadState				(DataStream& ds);		// #TODO
 	bool	StoreState				(DataStream& ds) const;	// #TODO
@@ -44,7 +44,7 @@ private:
 	Owner<Ui::ConnectionWidgetClass>	ui;
 	ConnectionSettings*					settings;
 
-	using SettingsWidgets = HashTable<QString, ConnectionSettings*>;
+	using SettingsWidgets = HashTable<QString, Owner<ConnectionSettings>>;
 	SettingsWidgets						settingsWidgets;
 
 	Communication::Connection&			connection;

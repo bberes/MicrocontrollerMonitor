@@ -3,8 +3,8 @@
 #define Network__DataReceiver__hpp
 
 // #Kernel
-#include "KernelTypes.hpp"
 #include "Types\ByteArray.hpp"
+#include "KernelTypes.hpp"
 
 // #Network
 #include "Interfaces\Receiver.hpp"

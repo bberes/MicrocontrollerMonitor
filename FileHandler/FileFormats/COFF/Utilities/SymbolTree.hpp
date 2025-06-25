@@ -6,6 +6,7 @@
 #include "FileHandlerExport.hpp"
 
 // #Kernel
+#include "Types\Owner.hpp"
 #include "Types\Vector.hpp"
 
 // #FileHandler
@@ -16,6 +17,9 @@ namespace File::COFF {
 
 class FILEHANDLER_EXPORT SymbolTree final {
 public:
+	SymbolTree (const SymbolTree&) = delete;
+	SymbolTree& operator= (const SymbolTree&) = delete;
+
 	explicit SymbolTree (const SymbolFile& symbolFile);
 	~SymbolTree ();
 
@@ -25,7 +29,7 @@ private:
 	void	Build			(const SymbolFile& symbolFile);
 
 private:
-	Vector<Object*> objects;
+	Vector<Owner<Object>> objects;
 };
 
 }

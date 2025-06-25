@@ -34,7 +34,7 @@ ConnectionWidget::ConnectionWidget (Environment& environment, QWidget* parent/* 
 	ui->setupUi (this);
 
 	AddProtocols ();
-	AddConnectionSettings (new SerialPortSettings (connection));
+	AddConnectionSettings (std::make_unique<SerialPortSettings> (connection));
 
 	ProtocolChanged ();
 	ConnectionTypeChanged ();
@@ -54,6 +54,9 @@ ConnectionWidget::ConnectionWidget (Environment& environment, QWidget* parent/* 
 		LoadState (ds);
 	}
 }
+
+
+ConnectionWidget::~ConnectionWidget () = default;
 
 
 void ConnectionWidget::SetStateOfControls (bool isConnected)
@@ -79,24 +82,24 @@ void ConnectionWidget::AddProtocols ()
 }
 
 
-void ConnectionWidget::AddConnectionSettings (ConnectionSettings* settings)
+void ConnectionWidget::AddConnectionSettings (Owner<ConnectionSettings> settings)
 {
 	QString name = settings->GetTypeName ();
 	if (settingsWidgets.count (name) != 0) {
 		throw std::invalid_argument ("{E713B931-6716-420D-87E8-7561905EBF07}");
 	}
 
-	settingsWidgets[name] = settings;
+	settingsWidgets[name] = std::move (settings);
 
 	ui->comboBoxConnectionType->addItem (name);
 }
 
 
-void ConnectionWidget::SetCurrentSettings (ConnectionSettings* settings)
+void ConnectionWidget::SetCurrentSettings (ConnectionSettings& settings)
 {
 	ui->horizontalLayoutConnection->removeWidget (this->settings);
-	ui->horizontalLayoutConnection->addWidget (settings);
-	this->settings = settings;
+	ui->horizontalLayoutConnection->addWidget (&settings);
+	this->settings = &settings;
 }
 
 
@@ -165,7 +168,7 @@ void ConnectionWidget::ProtocolChanged ()
 void ConnectionWidget::ConnectionTypeChanged ()
 {
 	auto name = ui->comboBoxConnectionType->currentText ();
-	SetCurrentSettings (settingsWidgets[name]);
+	SetCurrentSettings (*settingsWidgets[name]);
 }
 
 
@@ -204,13 +207,5 @@ void ConnectionWidget::SetAsDefault () const
 		} else {
 			logger.LogWarning ("{899CA1E8-E2EE-4053-95B7-B2C60E7C33BD}", "Unable to set as default.");
 		}
-	}
-}
-
-
-ConnectionWidget::~ConnectionWidget () // #ToDo: reorder functions
-{
-	for (auto& widget : settingsWidgets) {
-		delete widget.second;
 	}
 }

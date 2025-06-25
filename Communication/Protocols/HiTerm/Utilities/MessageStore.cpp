@@ -9,12 +9,7 @@
 using namespace Communication::HiTerm;
 
 
-MessageStore::~MessageStore ()
-{
-	for (auto& pair : store) {
-		delete pair.second;
-	}
-}
+MessageStore::~MessageStore () = default;
 
 
 void MessageStore::Register (const Message& message)
@@ -24,7 +19,7 @@ void MessageStore::Register (const Message& message)
 		throw std::invalid_argument ("{75B7A6D2-1F18-46AE-A0B1-A29A1F22C8D0}");
 	}
 
-	store[typeID] = message.New (ForDeserialization);
+	store[typeID].reset (message.New (ForDeserialization));
 }
 
 

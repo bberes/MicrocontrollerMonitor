@@ -9,8 +9,8 @@
 #include <QObject>
 
 // #Kernel
-#include "KernelTypes.hpp"
 #include "Types\Owner.hpp"
+#include "KernelTypes.hpp"
 
 // #Network
 #include "NetworkTypes.hpp"

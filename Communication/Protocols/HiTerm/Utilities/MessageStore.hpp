@@ -8,6 +8,7 @@
 // #Kernel
 #include "Types\BaseTypes.hpp"
 #include "Types\HashTable.hpp"
+#include "Types\Owner.hpp"
 
 // #Communication
 #include "CommunicationTypes.hpp"
@@ -17,6 +18,10 @@ namespace Communication::HiTerm {
 
 class COMMUNICATION_EXPORT MessageStore final {
 public:
+	MessageStore (const MessageStore&)				= delete;
+	MessageStore& operator= (const MessageStore&)	= delete;
+
+	MessageStore () = default;
 	~MessageStore ();
 
 	void		Register		(const Message& message);
@@ -24,7 +29,7 @@ public:
 	Message*	CreateNew		(const MessageTypeID& typeID) const;
 
 private:
-	HashTable<UInt16, Message*> store;
+	HashTable<UInt16, Owner<Message>> store;
 };
 
 }

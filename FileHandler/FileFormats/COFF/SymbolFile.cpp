@@ -30,15 +30,7 @@ File::COFF::SymbolFile::SymbolFile (DeserializationSelector ds, const ByteArray&
 }
 
 
-File::COFF::SymbolFile::~SymbolFile ()
-{
-	for (const auto& sectionHeader : sectionHeaders) {
-		delete sectionHeader;
-	}
-	for (const auto& symbol : symbols) {
-		delete symbol;
-	}
-}
+File::COFF::SymbolFile::~SymbolFile () = default;
 
 
 void File::COFF::SymbolFile::Enumerate (const std::function<void (const SymbolEntry&)>& process) const
@@ -84,7 +76,7 @@ size_t File::COFF::SymbolFile::Read (DataStream& is)
 	for (UInt32 i = 0u; i < header.GetNumOfSectionHeaders (); ++i) {
 		auto sectionHeader = std::make_unique<SectionHeaderCOFF2> (ForDeserialization);
 		size += sectionHeader->Read (is);
-		sectionHeaders.push_back (sectionHeader.release ()); // #ToDo: use Owner or vector<SectionHeaderCOFF2> ???
+		sectionHeaders.push_back (std::move (sectionHeader));
 
 //		const auto physicalAddress = sectionHeader->GetPhysicalAddress ();
 //		const auto pointerToRawData = sectionHeader->GetPointerToRawData ();
@@ -129,7 +121,7 @@ size_t File::COFF::SymbolFile::Read (DataStream& is)
 			INSPECT (v->HasAuxiliaryEntry (), name.c_str ());
 		}
 
-		symbols.push_back (v.release ()); // #ToDo: use Owner or vector<SymbolEntry> ???
+		symbols.push_back (std::move (v));
 	}
 
 
