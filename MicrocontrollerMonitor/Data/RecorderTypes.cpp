@@ -53,7 +53,7 @@ void ArrayListener::Init ()
 }
 
 
-void ArrayListener::Update (const std::vector<UInt32>& variables)
+void ArrayListener::Update (const Vector<UInt32>& variables)
 {
 	++iter;
 

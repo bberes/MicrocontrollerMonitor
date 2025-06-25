@@ -8,7 +8,7 @@
 #include "Protocols\HiTerm\CommandData\HiTermVariable.hpp"
 
 
-size_t Communication::HiTerm::LengthOf (const std::vector<Variable>& variables)
+size_t Communication::HiTerm::LengthOf (const Vector<Variable>& variables)
 {
 	size_t size = 0u;
 	for (auto& variable : variables) {
@@ -18,7 +18,7 @@ size_t Communication::HiTerm::LengthOf (const std::vector<Variable>& variables)
 }
 
 
-size_t Communication::HiTerm::Read (DataStream& ds, std::vector<Variable>& variables, UInt16 length)
+size_t Communication::HiTerm::Read (DataStream& ds, Vector<Variable>& variables, UInt16 length)
 {
 	variables.clear ();
 	size_t size = 0u;
@@ -34,7 +34,7 @@ size_t Communication::HiTerm::Read (DataStream& ds, std::vector<Variable>& varia
 }
 
 
-size_t Communication::HiTerm::Write (DataStream& ds, const std::vector<Variable>& variables)
+size_t Communication::HiTerm::Write (DataStream& ds, const Vector<Variable>& variables)
 {
 	size_t size = 0u;
 	for (auto& variable : variables) {

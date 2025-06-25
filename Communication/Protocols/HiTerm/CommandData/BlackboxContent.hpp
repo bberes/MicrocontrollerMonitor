@@ -5,13 +5,11 @@
 // #ExportHeader
 #include "CommunicationExport.hpp"
 
-// #Standard
-#include <vector>
-
 // #Kernel
 #include "Serialization\Deserializable.hpp"
 #include "Serialization\Serializable.hpp"
 #include "Types\BaseTypes.hpp"
+#include "Types\Vector.hpp"
 
 
 namespace Communication::HiTerm {
@@ -21,7 +19,7 @@ class COMMUNICATION_EXPORT BlackboxContent final
 	, private Deserializable
 {
 public:
-	using Content = std::vector<UInt32>;
+	using Content = Vector<UInt32>;
 
 	class COMMUNICATION_EXPORT Info final
 		: private Serializable

@@ -62,7 +62,7 @@ void Communication::WriteVariablesResponse::Notify ()
 }
 
 
-void Communication::ReadArrayResponse::SetVariables (const std::vector<UInt32>& variables)
+void Communication::ReadArrayResponse::SetVariables (const Vector<UInt32>& variables)
 {
 	for (auto& observer : GetObservers ()) {
 		static_cast<ReadArrayResponseListener*> (observer)->Update (variables);

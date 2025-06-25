@@ -7,13 +7,13 @@
 
 // #Standard
 #include <functional>
-#include <vector>
 
 // #Kernel
 #include "Serialization\Deserializable.hpp"
 #include "Serialization\Serializable.hpp"
 #include "Types\ByteArray.hpp"
 #include "Types\Owner.hpp"
+#include "Types\Vector.hpp"
 #include "KernelTypes.hpp"
 
 // #FileHandler
@@ -60,11 +60,11 @@ private:
 
 	FileHeader							header;
 	Owner<OptionalHeader>				optionalHeader;
-	std::vector<SectionHeaderCOFF2*>	sectionHeaders;
-//	std::vector<>	;	//	Raw data for each initialized section
-//	std::vector<>	;	//	Relocation information for each initialized section
-	std::vector<SymbolEntry*>			symbols;
-//	std::vector<>		strings;
+	Vector<SectionHeaderCOFF2*>			sectionHeaders;
+//	Vector<>	;	//	Raw data for each initialized section
+//	Vector<>	;	//	Relocation information for each initialized section
+	Vector<SymbolEntry*>				symbols;
+//	Vector<>		strings;
 };
 
 }

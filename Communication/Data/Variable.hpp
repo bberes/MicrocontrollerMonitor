@@ -5,9 +5,6 @@
 // #ExportHeader
 #include "CommunicationExport.hpp"
 
-// #Standard
-#include <vector>
-
 // #Kernel
 #include "Types\BaseTypes.hpp"
 

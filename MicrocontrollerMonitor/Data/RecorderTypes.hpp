@@ -74,7 +74,7 @@ public:
 	void			Init			();
 
 private:
-	virtual void	Update			(const std::vector<UInt32>& variables) override;
+	virtual void	Update			(const Vector<UInt32>& variables) override;
 
 public:
 	static constexpr UInt32	StartAddr	= 0x00000010; // #ToDo: find its origin
@@ -82,7 +82,7 @@ public:
 	static constexpr UInt16	LengthLast	= 0x0080;     // #ToDo: find its origin
 	static constexpr UInt16	size		= 4u * LengthUnit + LengthLast; // #ToDo: why?
 
-	std::vector<UInt32>		data;
+	Vector<UInt32>			data;
 	size_t					iter = 0u;
 	UInt32					addr = StartAddr;
 	UInt16					len  = LengthUnit;

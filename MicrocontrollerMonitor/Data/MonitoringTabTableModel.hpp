@@ -17,7 +17,7 @@ class MonitoringTabTableModel final
 	Q_OBJECT
 
 public:
-	MonitoringTabTableModel (QObject* parent = nullptr);
+	explicit MonitoringTabTableModel (QObject* parent = nullptr);
 
 private:
 	virtual void		Update		(const Communication::TabDataEntries& entries) override;
@@ -30,8 +30,8 @@ private:
 	virtual QVariant	headerData	(int section, Qt::Orientation orientation, int role) const override;
 
 private:
-	using Row	= std::vector<QString>;
-	using Data	= std::vector<Row>;
+	using Row	= Vector<QString>;
+	using Data	= Vector<Row>;
 
 	Data mData;
 };

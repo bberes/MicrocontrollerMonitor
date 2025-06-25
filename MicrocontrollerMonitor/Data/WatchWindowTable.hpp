@@ -61,7 +61,7 @@ public:
 	int							ColumnCount		() const { return Row::MemberCount (); }
 
 private:
-	std::vector<Row> rows;
+	Vector<Row> rows;
 };
 
 }

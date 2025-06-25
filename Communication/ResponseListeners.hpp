@@ -38,7 +38,7 @@ private:
 class ReadArrayResponseListener : public Utilities::Observer {
 private:
 	friend ReadArrayResponse;
-	virtual void Update (const std::vector<UInt32>& variables) = 0; // #ToDo: temporary type
+	virtual void Update (const Vector<UInt32>& variables) = 0; // #ToDo: temporary type
 };
 
 

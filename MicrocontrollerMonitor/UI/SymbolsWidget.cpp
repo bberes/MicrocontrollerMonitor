@@ -39,9 +39,9 @@ public:
 	void			Store		(DataStream& ds) const;
 
 private:
-	using Entries	= std::vector<Entry>;
+	using Entries	= Vector<Entry>;
 	using EntryMap	= HashTable<QString, size_t>;
-	using Keys		= std::vector<QString>;
+	using Keys		= Vector<QString>;
 
 	Entries		entries;
 	EntryMap	entryMap;

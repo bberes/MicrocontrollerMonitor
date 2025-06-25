@@ -2,11 +2,9 @@
 #ifndef Communication__CommunicationTypes__hpp
 #define Communication__CommunicationTypes__hpp
 
-// #Standard
-#include <vector>
-
 // #Kernel
 #include "Types\BaseTypes.hpp"
+#include "Types\Vector.hpp"
 
 
 namespace Communication {
@@ -53,10 +51,10 @@ namespace Communication {
 	struct TabDataEntry;
 
 	using MemoryRef			= MemoryReference;
-	using MemoryRefs		= std::vector<MemoryRef>;
-	using TabDataEntries	= std::vector<TabDataEntry>;
-	using TabValues			= std::vector<UInt32>;
-	using Variables			= std::vector<Variable>;
+	using MemoryRefs		= Vector<MemoryRef>;
+	using TabDataEntries	= Vector<TabDataEntry>;
+	using TabValues			= Vector<UInt32>;
+	using Variables			= Vector<Variable>;
 
 }
 
@@ -76,9 +74,9 @@ namespace Communication::HiTerm {
 	class Memory;
 	class Variable;
 
-	using MemoryEntries	= std::vector<Memory>;
-	using Values		= std::vector<UInt32>;
-	using Variables		= std::vector<Variable>;
+	using MemoryEntries	= Vector<Memory>;
+	using Values		= Vector<UInt32>;
+	using Variables		= Vector<Variable>;
 }
 
 

@@ -7,12 +7,12 @@
 
 // #Standard
 #include <string>
-#include <vector>
 
 // #Kernel
 #include "Serialization\Deserializable.hpp"
 #include "Serialization\Serializable.hpp"
 #include "Types\BaseTypes.hpp"
+#include "Types\Vector.hpp"
 
 // #Communication
 #include "MonTabType.hpp"
@@ -24,7 +24,7 @@ namespace Communication::HiTerm {
 class MonTab final {
 public:
 	class Entry;
-	using Entries = std::vector<Entry>;
+	using Entries = Vector<Entry>;
 
 public:
 	class Entry final

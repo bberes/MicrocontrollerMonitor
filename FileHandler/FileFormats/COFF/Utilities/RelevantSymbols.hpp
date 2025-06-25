@@ -4,7 +4,9 @@
 
 // #Standard
 #include <functional>
-#include <vector>
+
+// #Kernel
+#include "Types\Vector.hpp"
 
 // #FileHandler
 #include "FileFormats\COFF\SymbolTable\SymbolEntry.hpp"
@@ -27,8 +29,8 @@ public:
 	void				Enumerate	(const SymbolProcessor& process) const;
 
 private:
-	std::vector<SymbolEntry>	symbols;
-//	std::vector<std::string>	names;
+	Vector<SymbolEntry>	symbols;
+//	Vector<std::string>	names;
 };
 
 }

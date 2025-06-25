@@ -2,9 +2,6 @@
 #ifndef Communication__MemoryReference__hpp
 #define Communication__MemoryReference__hpp
 
-// #Standard
-#include <vector>
-
 // #Communication
 #include "AddressSize.hpp"
 #include "CommunicationTypes.hpp"

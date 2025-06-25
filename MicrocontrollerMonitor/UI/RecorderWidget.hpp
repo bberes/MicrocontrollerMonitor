@@ -17,13 +17,13 @@ class GraphWidget final : public QWidget {
 public:
 	explicit GraphWidget (QWidget* parent);
 
-	void SetSamples (const std::vector<UInt32>& values);
+	void SetSamples (const Vector<UInt32>& values);
 
 private:
 	void paintEvent (QPaintEvent*) override;
 	
 private:
-	std::vector<float> samples;
+	Vector<float> samples;
 };
 
 

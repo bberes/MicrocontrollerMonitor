@@ -1,5 +1,8 @@
 #include "Observer.hpp"
 
+// #Kernel
+#include "Types\Vector.hpp"
+
 
 void Utilities::Subject::Attach (Observer& observer)
 {
@@ -27,7 +30,7 @@ void Utilities::Subject::Detach (Observer& observer)
 
 Utilities::Subject::~Subject ()
 {
-	std::vector<Observer*> toDetach;
+	Vector<Observer*> toDetach;
 	for (Observer* observer : observers) {
 		toDetach.push_back (observer);
 	}

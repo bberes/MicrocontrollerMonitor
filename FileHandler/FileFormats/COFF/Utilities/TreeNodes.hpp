@@ -9,10 +9,10 @@
 
 // #Standard
 #include <string>
-#include <vector>
 
 // #Kernel
 #include "Types\Owner.hpp"
+#include "Types\Vector.hpp"
 #include "Utilities\Debug.hpp"
 #include "Utilities\Memory.hpp"
 
@@ -59,12 +59,12 @@ private:
 	virtual void		ProcessImpl	(const SymbolFile& symbolFile) = 0;
 
 protected:
-	SymbolEntry					symbol;
-	std::string					name;
+	SymbolEntry				symbol;
+	std::string				name;
 
 private:
-	Object*						parent;
-	std::vector<Owner<Object>>	childNodes;
+	Object*					parent;
+	Vector<Owner<Object>>	childNodes;
 };
 
 

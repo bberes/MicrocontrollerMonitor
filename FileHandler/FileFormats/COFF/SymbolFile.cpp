@@ -97,7 +97,7 @@ size_t File::COFF::SymbolFile::Read (DataStream& is)
 //
 //		const auto pointerToRelocEntries = sectionHeader->GetPointerToRelocationEntries ();
 //		const auto relocSize = sectionHeader->GetNumOfRelocationEntries ();
-//		std::vector<RelocationEntry> relocArray;
+//		Vector<RelocationEntry> relocArray;
 //		for (UInt32 i = 0u; i < relocSize; ++i) {
 //			ByteArray array;
 //			for (UInt32 j = 0u; j < 10u; ++j) {

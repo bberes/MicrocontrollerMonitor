@@ -30,7 +30,7 @@ GraphWidget::GraphWidget (QWidget* parent)
 }
 
 
-void GraphWidget::SetSamples (const std::vector<UInt32>& values)
+void GraphWidget::SetSamples (const Vector<UInt32>& values)
 {
 	samples.resize (values.size () / 4);
 	for (size_t i = 0u; i < values.size (); i += 4u) {

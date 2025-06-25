@@ -74,6 +74,9 @@
     <ClInclude Include="Types\Owner.hpp">
       <Filter>Header Files\Types</Filter>
     </ClInclude>
+    <ClInclude Include="Types\Vector.hpp">
+      <Filter>Header Files\Types</Filter>
+    </ClInclude>
     <ClInclude Include="Utilities\CRC.hpp">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>

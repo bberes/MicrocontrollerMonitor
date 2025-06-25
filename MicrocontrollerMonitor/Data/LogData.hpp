@@ -2,13 +2,11 @@
 #ifndef Data__LogData__hpp
 #define Data__LogData__hpp
 
-// #Standard
-#include <vector>
-
 // #Qt
 #include <QString>
 
 // #Kernel
+#include "Types\Vector.hpp"
 #include "Utilities\Observer.hpp"
 
 
@@ -18,7 +16,7 @@ public:
 	void Store  () const;
 
 private:
-	std::vector<QString> lines;
+	Vector<QString> lines;
 };
 
 

@@ -24,6 +24,7 @@
     <ClInclude Include="Types\HashTable.hpp" />
     <ClInclude Include="Types\NamedType.hpp" />
     <ClInclude Include="Types\Owner.hpp" />
+    <ClInclude Include="Types\Vector.hpp" />
     <ClInclude Include="Utilities\CRC.hpp" />
     <ClInclude Include="Utilities\DataStreamStatus.hpp" />
     <ClInclude Include="Utilities\Debug.hpp" />

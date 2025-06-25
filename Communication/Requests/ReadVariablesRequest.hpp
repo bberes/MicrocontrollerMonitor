@@ -2,9 +2,6 @@
 #ifndef Communication__ReadVariablesRequest__hpp
 #define Communication__ReadVariablesRequest__hpp
 
-// #Standard
-#include <vector>
-
 // #Communication
 #include "Data\MemoryReference.hpp"
 #include "Request.hpp"

@@ -2,9 +2,6 @@
 #ifndef Communication__HiTerm_Command_ReadMonTab__hpp
 #define Communication__HiTerm_Command_ReadMonTab__hpp
 
-// #Standard
-#include <vector>
-
 // #Communication
 #include "Protocols\HiTerm\CommandData\MonTab.hpp"
 #include "Protocols\HiTerm\CommandData\MonTabIndex.hpp"

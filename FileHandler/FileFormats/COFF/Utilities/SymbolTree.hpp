@@ -5,8 +5,8 @@
 // #ExportHeader
 #include "FileHandlerExport.hpp"
 
-// #Standard
-#include <vector>
+// #Kernel
+#include "Types\Vector.hpp"
 
 // #FileHandler
 #include "FileHandlerTypes.hpp"
@@ -25,7 +25,7 @@ private:
 	void	Build			(const SymbolFile& symbolFile);
 
 private:
-	std::vector<Object*>	objects;
+	Vector<Object*> objects;
 };
 
 }
