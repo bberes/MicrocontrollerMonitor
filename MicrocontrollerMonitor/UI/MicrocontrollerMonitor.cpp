@@ -18,6 +18,7 @@
 #include "NewMonitoringTabDialog.hpp"
 #include "RecorderWidget.hpp"
 #include "SymbolsWidget.hpp"
+#include "Utilities.hpp"
 #include "WatchWindowWidget.hpp"
 
 
@@ -52,7 +53,7 @@ MicrocontrollerMonitor::MicrocontrollerMonitor (LogData& logData, QWidget* paren
 	ResetWidgetOfDockWidget (ui->dockWidgetConnection, connectionWidget.get ());
 	ResetWidgetOfDockWidget (ui->dockWidgetLogger    , loggerWidget    .get ());
 
-	processorView = new ProcessorView (ui->centralWidget);
+	processorView = MakeChild<ProcessorView> (*ui->centralWidget); // #ToDo: destruction order
 	ui->horizontalLayout->addWidget (processorView);
 
 	QObject::connect (ui->actionNewMonitoringTab, SIGNAL (triggered ()), this, SLOT (NewMonitoringTab ()));
@@ -60,10 +61,7 @@ MicrocontrollerMonitor::MicrocontrollerMonitor (LogData& logData, QWidget* paren
 }
 
 
-MicrocontrollerMonitor::~MicrocontrollerMonitor ()
-{
-	delete processorView;
-}
+MicrocontrollerMonitor::~MicrocontrollerMonitor () = default;
 
 
 void MicrocontrollerMonitor::SetUpMenuView ()
@@ -122,7 +120,7 @@ void MicrocontrollerMonitor::NewMonitoringTab ()
 		return;
 	}
 
-	processorView->NewMonitoringTab (environment->GetLogger (), id, index);
+	processorView->NewMonitoringTab (id, index);
 
 	auto tab = processorView->GetMonitoringTab (id, index);
 	tab->SetProtocol (environment->GetConnection ().GetProtocol ());

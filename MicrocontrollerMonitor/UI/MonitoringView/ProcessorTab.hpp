@@ -19,7 +19,7 @@ class ProcessorTab final : public QWidget {
 	Q_OBJECT
 
 public:
-	explicit ProcessorTab (Utilities::Logger& logger, QWidget* parent = nullptr);
+	explicit ProcessorTab (QWidget* parent = nullptr);
 	~ProcessorTab ();
 
 	void			NewMonitoringTab		(Int32 processorID, Int32 tabIndex);
@@ -38,8 +38,6 @@ private:
 
 	using Tabs = HashTable<Int32, MonitoringTab*>;
 	Tabs							tabs;
-
-	Utilities::Logger&				logger;
 };
 
 

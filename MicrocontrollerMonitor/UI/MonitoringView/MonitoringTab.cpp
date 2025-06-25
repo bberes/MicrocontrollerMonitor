@@ -17,17 +17,18 @@
 #include "Utilities.hpp"
 
 
-MonitoringTab::MonitoringTab (Utilities::Logger& logger, Int32 processorID, Int32 tabIndex, QWidget* parent)
+MonitoringTab::MonitoringTab (Int32 processorID, Int32 tabIndex, QWidget* parent)
 	: QWidget		(parent)
 	, ui			(std::make_unique<Ui::MonitoringTabClass> ())
 	, processorID	(processorID)
 	, tabIndex		(tabIndex)
-	, tableModel	(new MonitoringTabTableModel)
+	, tableModel	(nullptr)
 	, timer			(MakeChild<QTimer> (*this))
 	, protocol		(nullptr)
 {
 	ui->setupUi (this);
 
+	tableModel = MakeChild<MonitoringTabTableModel> (*ui->tableView);
 	ui->tableView->setModel (tableModel);
 
 	AutoRefresh (false);
@@ -38,10 +39,7 @@ MonitoringTab::MonitoringTab (Utilities::Logger& logger, Int32 processorID, Int3
 }
 
 
-MonitoringTab::~MonitoringTab ()
-{
-	delete tableModel;
-}
+MonitoringTab::~MonitoringTab () = default;
 
 
 void MonitoringTab::SetProtocol (Communication::Protocol& protocol)

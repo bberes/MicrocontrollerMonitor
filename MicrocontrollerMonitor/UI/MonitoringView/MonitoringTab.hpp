@@ -21,7 +21,7 @@ class MonitoringTab final : public QWidget {
 	Q_OBJECT
 
 public:
-	explicit MonitoringTab (Utilities::Logger& logger, Int32 processorID, Int32 tabIndex, QWidget* parent = nullptr);
+	explicit MonitoringTab (Int32 processorID, Int32 tabIndex, QWidget* parent = nullptr);
 	~MonitoringTab ();
 
 	void			SetProtocol		(Communication::Protocol& protocol);

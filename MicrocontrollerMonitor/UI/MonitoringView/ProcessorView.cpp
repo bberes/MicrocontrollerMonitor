@@ -11,9 +11,10 @@
 
 // #MicrocontrollerMonitor
 #include "ProcessorTab.hpp"
+#include "Utilities.hpp"
 
 
-ProcessorView::ProcessorView (QWidget* parent)
+ProcessorView::ProcessorView (QWidget* parent/* = nullptr*/)
 	: QWidget	(parent)
 	, ui		(std::make_unique<Ui::ProcessorViewClass> ())
 {
@@ -23,22 +24,17 @@ ProcessorView::ProcessorView (QWidget* parent)
 }
 
 
-ProcessorView::~ProcessorView ()
-{
-	for (auto& tab : tabs) {
-		delete tab.second;
-	}
-}
+ProcessorView::~ProcessorView () = default;
 
 
-void ProcessorView::NewMonitoringTab (Utilities::Logger& logger, Int32 processorID, Int32 tabIndex)
+void ProcessorView::NewMonitoringTab (Int32 processorID, Int32 tabIndex)
 {
 	if (HasMonitoringTab (processorID, tabIndex)) {
 		return;
 	}
 
 	if (!HasProcessorTab (processorID)) {
-		NewProcessorTabImpl (logger, processorID);
+		NewProcessorTabImpl (processorID);
 	}
 
 	tabs.at (processorID)->NewMonitoringTab (processorID, tabIndex);
@@ -65,9 +61,9 @@ MonitoringTab* ProcessorView::GetMonitoringTab (Int32 processorID, Int32 tabInde
 }
 
 
-void ProcessorView::NewProcessorTabImpl (Utilities::Logger& logger, Int32 processorID)
+void ProcessorView::NewProcessorTabImpl (Int32 processorID)
 {
-	auto tab = new ProcessorTab (logger);
+	auto tab = MakeChild<ProcessorTab> (*ui->tabWidget);
 	tabs[processorID] = tab;
 	ui->tabWidget->addTab (tab, QString::number (processorID));
 }

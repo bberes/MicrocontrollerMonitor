@@ -67,12 +67,18 @@ struct SymbolsWidget::Entry final {
 };
 
 
-static void OverrideCopyShortcutOn (QListWidget* listWidget)
+static QShortcut* MakeShortcut (QObject& parent, const QKeySequence& ks)
 {
-	QShortcut* copyShortcut = new QShortcut (QKeySequence::Copy, listWidget);
-    QObject::connect (copyShortcut, &QShortcut::activated, [listWidget] () {
+	return new QShortcut (ks, &parent);
+}
+
+
+static void OverrideCopyShortcutOn (QListWidget& listWidget)
+{
+	QShortcut* copyShortcut = MakeShortcut (listWidget, QKeySequence::Copy);
+    QObject::connect (copyShortcut, &QShortcut::activated, [&listWidget] () {
         QStringList selectedTexts;
-        for (QListWidgetItem* item : listWidget->selectedItems ()) {
+        for (QListWidgetItem* item : listWidget.selectedItems ()) {
             selectedTexts << item->text ();
         }
         QApplication::clipboard ()->setText (selectedTexts.join ("\n"));
@@ -89,7 +95,7 @@ SymbolsWidget::SymbolsWidget (Environment& environment, QWidget* parent/* = null
 	ui->setupUi (this);
 
 	ui->listWidget->setSelectionMode (QAbstractItemView::ExtendedSelection);
-	OverrideCopyShortcutOn (ui->listWidget);
+	OverrideCopyShortcutOn (*ui->listWidget);
 
 	QObject::connect (ui->lineEdit, SIGNAL (textChanged (const QString&)), this, SLOT (RefreshList ()));
 }

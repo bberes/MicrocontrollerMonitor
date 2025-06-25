@@ -19,15 +19,15 @@ class ProcessorView final : public QWidget {
 	Q_OBJECT
 
 public:
-	ProcessorView (QWidget* parent = nullptr);
+	explicit ProcessorView (QWidget* parent = nullptr);
 	~ProcessorView ();
 
-	void			NewMonitoringTab	(Utilities::Logger& logger, Int32 processorID, Int32 tabIndex);
+	void			NewMonitoringTab	(Int32 processorID, Int32 tabIndex);
 	bool			HasMonitoringTab	(Int32 processorID, Int32 tabIndex) const;
 	MonitoringTab*	GetMonitoringTab	(Int32 processorID, Int32 tabIndex);
 
 private:
-	void			NewProcessorTabImpl	(Utilities::Logger& logger, Int32 processorID);
+	void			NewProcessorTabImpl	(Int32 processorID);
 	bool			HasProcessorTab		(Int32 processorID) const;
 
 private slots:

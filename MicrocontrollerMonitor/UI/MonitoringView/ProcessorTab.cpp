@@ -13,10 +13,9 @@
 #include "MonitoringTab.hpp"
 
 
-ProcessorTab::ProcessorTab (Utilities::Logger& logger, QWidget* parent)
+ProcessorTab::ProcessorTab (QWidget* parent/* = nullptr*/)
 	: QWidget	(parent)
 	, ui		(std::make_unique<Ui::ProcessorTabClass> ())
-	, logger	(logger)
 {
 	ui->setupUi (this);
 
@@ -60,7 +59,7 @@ MonitoringTab* ProcessorTab::GetMonitoringTab (Int32 tabIndex)
 
 void ProcessorTab::NewMonitoringTabImpl (Int32 processorID, Int32 tabIndex)
 {
-	auto tab = new MonitoringTab (logger, processorID, tabIndex);
+	auto tab = new MonitoringTab (processorID, tabIndex);
 	tabs[tabIndex] = tab;
 	ui->tabWidget->addTab (tab, QString::number (tabIndex));
 }
